@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">s354378-mappe2</string>
     <string name="title">Legg til venn</string>
+    <string name="btnSubmit">Registrer</string>
+    <string name="inputFirst">First Name</string>
+    <string name="inputLast">Last Name</string>
 </resources>
