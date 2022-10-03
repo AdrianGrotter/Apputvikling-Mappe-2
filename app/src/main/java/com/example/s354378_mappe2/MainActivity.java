@@ -11,6 +11,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     EditText firstName;
     EditText lastName;
+    EditText phone;
 
     DBHandler dbHelper;
     SQLiteDatabase db;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         firstName = (EditText) findViewById(R.id.inputFirstName);
         lastName = (EditText) findViewById(R.id.inputLastName);
+        phone = (EditText) findViewById(R.id.inputPhone);
 
 
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
@@ -37,7 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 Contact newContact = new Contact();
                 newContact.first = firstName.getText().toString();
                 newContact.last = lastName.getText().toString();
+                newContact.phone = phone.getText().toString();
+
                 System.out.println(newContact.first + " " + newContact.last);
+
+                dbHelper.addContact(db, newContact);
             }
         });
     }
