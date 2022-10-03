@@ -41,10 +41,16 @@ public class MainActivity extends AppCompatActivity {
                 newContact.last = lastName.getText().toString();
                 newContact.phone = phone.getText().toString();
 
-                System.out.println(newContact.first + " " + newContact.last);
+                System.out.println(newContact.first + " " + newContact.last + " " + newContact+phone);
 
                 dbHelper.addContact(db, newContact);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy(){
+        dbHelper.close();
+        super.onDestroy();
     }
 }
