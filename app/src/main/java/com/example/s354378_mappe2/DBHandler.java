@@ -31,10 +31,10 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void leggTilKontakt(SQLiteDatabase db, Kontakt kontakt) {
+    public void addContact(SQLiteDatabase db, Contact Contact) {
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, kontakt.getFirst());
-        values.put(KEY_PHONE, kontakt.getPhone());
+        values.put(KEY_NAME, Contact.getFirst());
+        values.put(KEY_PHONE, Contact.getPhone());
         db.insert(TABLE_CONTACTS, null, values);
     }
 }

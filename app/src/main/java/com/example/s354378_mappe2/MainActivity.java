@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Kontakt newKontakt = new Kontakt();
-                newKontakt.first = firstName.getText().toString();
-                newKontakt.last = lastName.getText().toString();
-                System.out.println(newKontakt.first + " " + newKontakt.last);
+                Contact newContact = new Contact();
+                newContact.first = firstName.getText().toString();
+                newContact.last = lastName.getText().toString();
+                System.out.println(newContact.first + " " + newContact.last);
             }
         });
     }

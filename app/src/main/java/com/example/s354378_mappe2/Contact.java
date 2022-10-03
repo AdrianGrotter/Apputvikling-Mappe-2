@@ -1,15 +1,15 @@
 package com.example.s354378_mappe2;
 
-public class Kontakt {
+public class Contact {
     long ID;
     String first;
     String last;
     String phone;
 
-    public Kontakt() {
+    public Contact() {
     }
 
-    public Kontakt(long ID, String first, String last, String phone) {
+    public Contact(long ID, String first, String last, String phone) {
         this.ID = ID;
         this.first = first;
         this.last = last;
