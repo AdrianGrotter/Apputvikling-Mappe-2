@@ -47,7 +47,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/inputFirst"
             android:textColor="#FFFFFF"
             android:importantForAutofill="no" />
 
@@ -57,7 +56,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/inputLast"
             android:textColor="#FFFFFF"
             android:importantForAutofill="no" />
     </LinearLayout>
