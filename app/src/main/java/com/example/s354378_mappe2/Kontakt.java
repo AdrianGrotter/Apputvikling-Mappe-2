@@ -1,17 +1,19 @@
 package com.example.s354378_mappe2;
 
-public class Friend {
+public class Kontakt {
     long ID;
     String first;
     String last;
+    String phone;
 
-    public Friend() {
+    public Kontakt() {
     }
 
-    public Friend(long ID, String first, String last) {
+    public Kontakt(long ID, String first, String last, String phone) {
         this.ID = ID;
         this.first = first;
         this.last = last;
+        this.phone = phone;
     }
 
     public long getID() {
@@ -36,5 +38,13 @@ public class Friend {
 
     public void setLast(String last) {
         this.last = last;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
