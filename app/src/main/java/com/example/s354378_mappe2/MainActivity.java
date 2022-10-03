@@ -2,16 +2,18 @@ package com.example.s354378_mappe2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.sql.SQLOutput;
-
 public class MainActivity extends AppCompatActivity {
     EditText firstName;
     EditText lastName;
+
+    DBHandler dbHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +24,20 @@ public class MainActivity extends AppCompatActivity {
         firstName = (EditText) findViewById(R.id.inputFirstName);
         lastName = (EditText) findViewById(R.id.inputLastName);
 
+
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
+
+
+        dbHelper = new DBHandler(this);
+        db = dbHelper.getWritableDatabase();
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Friend newFriend = new Friend();
-                newFriend.first = firstName.getText().toString();
-                newFriend.last = lastName.getText().toString();
-                System.out.println(newFriend.first + " " + newFriend.last);
+                Kontakt newKontakt = new Kontakt();
+                newKontakt.first = firstName.getText().toString();
+                newKontakt.last = lastName.getText().toString();
+                System.out.println(newKontakt.first + " " + newKontakt.last);
             }
         });
     }
