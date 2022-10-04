@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     EditText firstName;
     EditText lastName;
     EditText phone;
+    TextView contactOutput;
 
     DBHandler dbHelper;
     SQLiteDatabase db;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         firstName = (EditText) findViewById(R.id.inputFirstName);
         lastName = (EditText) findViewById(R.id.inputLastName);
         phone = (EditText) findViewById(R.id.inputPhone);
+
+        contactOutput = (TextView) findViewById(R.id.contactOutput);
 
 
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
