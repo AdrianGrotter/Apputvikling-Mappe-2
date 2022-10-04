@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     EditText firstName;
     EditText lastName;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
+        Button btnShowContacts = (Button) findViewById(R.id.btnShowContacts);
 
 
         dbHelper = new DBHandler(this);
@@ -48,6 +52,24 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(newContact.first + " " + newContact.last + " " + newContact+phone);
 
                 dbHelper.addContact(db, newContact);
+            }
+        });
+
+        btnShowContacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String output = "";
+                List<Contact> contactList= dbHelper.retrieveAllContacts(db);
+                for (Contact myContact : contactList){
+                    /*
+                    output += "Id: "+ myContact.get_ID() +
+                            ", Fornavn: "+myContact.getFirst() +
+                            ", Etternavn: "+ myContact.getLast() +
+                            ", Telefonnummer: "+ myContact.getPhone() + "\n";
+                    */
+                    output += myContact.get_ID() + ", "+ myContact.getFirst() + " " + myContact.getLast() + ", " + myContact.getPhone() + "\n";
+                }
+                contactOutput.setText(output);
             }
         });
     }
