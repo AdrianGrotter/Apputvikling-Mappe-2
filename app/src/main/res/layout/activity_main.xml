@@ -42,22 +42,20 @@
         app:layout_constraintVertical_bias="0.31">
 
         <EditText
-            android:id="@+id/inputLastname"
+            android:id="@+id/inputFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/inputFirst"
             android:textColor="#FFFFFF"
             android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/inputName"
+            android:id="@+id/inputLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/inputLast"
             android:textColor="#FFFFFF"
             android:importantForAutofill="no" />
     </LinearLayout>
