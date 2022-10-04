@@ -1,7 +1,7 @@
 package com.example.s354378_mappe2;
 
 public class Contact {
-    long ID;
+    long _ID;
     String first;
     String last;
     String phone;
@@ -9,19 +9,19 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(long ID, String first, String last, String phone) {
-        this.ID = ID;
+    public Contact(long _ID, String first, String last, String phone) {
+        this._ID =_ID;
         this.first = first;
         this.last = last;
         this.phone = phone;
     }
 
-    public long getID() {
-        return ID;
+    public long get_ID() {
+        return _ID;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void set_ID(long _ID) {
+        this._ID = _ID;
     }
 
     public String getFirst() {
