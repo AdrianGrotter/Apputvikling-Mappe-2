@@ -20,31 +20,40 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <LinearLayout
-        android:layout_width="183dp"
-        android:layout_height="233dp"
+        android:layout_width="122dp"
+        android:layout_height="208dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCreateContact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/button_border"
+            android:textColor="#FFFFFF"
             android:text="Legg til kontakt" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnShowContactsPage"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/button_border"
+            android:text="Se kontakter"
+            android:textColor="#FFFFFF" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/button_border"
+            android:text="Button"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 

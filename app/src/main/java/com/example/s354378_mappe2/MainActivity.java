@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnRegistrer = (Button) findViewById(R.id.btnCreateContact);
+        Button btnShowContacts = (Button) findViewById(R.id.btnShowContactsPage);
 
         btnRegistrer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,10 +25,20 @@ public class MainActivity extends AppCompatActivity {
                 activityAddContacts();
             }
         });
+        btnShowContacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activityKontaktoversikt();
+            }
+        });
     }
 
     private void activityAddContacts() {
         Intent myIntent = new Intent(this, createContactActivity.class);
+        startActivity(myIntent);
+    }
+    private void activityKontaktoversikt() {
+        Intent myIntent = new Intent(this, KontaktoversiktActivity.class);
         startActivity(myIntent);
     }
 }

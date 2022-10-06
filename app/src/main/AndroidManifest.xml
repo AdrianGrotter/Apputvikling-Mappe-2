@@ -14,6 +14,7 @@
         android:theme="@style/Theme.S354378mappe2"
         tools:targetApi="31">
         <activity android:name=".createContactActivity"></activity>
+        <activity android:name=".KontaktoversiktActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
