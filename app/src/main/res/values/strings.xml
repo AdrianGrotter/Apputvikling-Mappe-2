@@ -3,6 +3,7 @@
     <string name="title">Legg til venn</string>
     <string name="btnSubmit">Registrer</string>
     <string name="btnShowContacts">Vis kontakter</string>
+    <string name="btnReturn">Tilbake</string>
     <string name="inputFirst">First Name</string>
     <string name="inputLast">Last Name</string>
 
