@@ -12,6 +12,10 @@ import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     static String TABLE_CONTACTS = "Contacts";
+    static String TABLE_APPOINTMENTS = "Appointments";
+    static String KEY_NAME = "Name";
+    static String KEY_TIME = "Time";
+    static String KEY_PARTICIPANTS = "Participants";
     static String KEY_ID = "_ID";
     static String KEY_FIRST = "FirstName";
     static String KEY_LAST = "LastName";
@@ -26,6 +30,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FIRST + " TEXT," + KEY_LAST + " TEXT," + KEY_PHONE + " TEXT" + ")";
+        String CREATE_TABLE_APPOINTMENT = "CREATE TABLE " + TABLE_APPOINTMENTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT," + KEY_TIME + " TEXT," + KEY_PARTICIPANTS + " TEXT" + ")";
         Log.d("SQL", CREATE_TABLE);
         db.execSQL(CREATE_TABLE);
     }
