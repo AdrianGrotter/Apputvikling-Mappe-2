@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class createContactActivity extends AppCompatActivity {
+public class CreateContactActivity extends AppCompatActivity {
     EditText firstName;
     EditText lastName;
     EditText phone;

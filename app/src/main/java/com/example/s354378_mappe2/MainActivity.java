@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnRegistrer = (Button) findViewById(R.id.btnCreateContact);
         Button btnShowContacts = (Button) findViewById(R.id.btnShowContactsPage);
+        Button btnCreateAppointment = (Button) findViewById(R.id.btnCreateAppointment);
 
         btnRegistrer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,14 +32,24 @@ public class MainActivity extends AppCompatActivity {
                 activityKontaktoversikt();
             }
         });
+        btnCreateAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activityKontaktoversikt();
+            }
+        });
     }
 
     private void activityAddContacts() {
-        Intent myIntent = new Intent(this, createContactActivity.class);
+        Intent myIntent = new Intent(this, CreateContactActivity.class);
         startActivity(myIntent);
     }
     private void activityKontaktoversikt() {
         Intent myIntent = new Intent(this, KontaktoversiktActivity.class);
+        startActivity(myIntent);
+    }
+    private void activityAddAppointment() {
+        Intent myIntent = new Intent(this, CreateAppointmentActivity.class);
         startActivity(myIntent);
     }
 }
