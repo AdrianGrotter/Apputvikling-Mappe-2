@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnCreateAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activityKontaktoversikt();
+                activityAddAppointment();
             }
         });
     }

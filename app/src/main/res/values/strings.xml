@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">s354378-mappe2</string>
     <string name="title">Legg til venn</string>
+    <string name="titleAppointment">Opprett avtale</string>
+    <string name="titleHome">Welcome</string>
+    <string name="titleDisplayContacts">Dine kontakter</string>
     <string name="btnSubmit">Registrer</string>
     <string name="btnShowContacts">Vis kontakter</string>
     <string name="btnReturn">Tilbake</string>
