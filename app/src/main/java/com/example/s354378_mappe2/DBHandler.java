@@ -32,7 +32,9 @@ public class DBHandler extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FIRST + " TEXT," + KEY_LAST + " TEXT," + KEY_PHONE + " TEXT" + ")";
         String CREATE_TABLE_APPOINTMENT = "CREATE TABLE " + TABLE_APPOINTMENTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT," + KEY_TIME + " TEXT," + KEY_PARTICIPANTS + " TEXT" + ")";
         Log.d("SQL", CREATE_TABLE);
+        Log.d("SQL", CREATE_TABLE_APPOINTMENT);
         db.execSQL(CREATE_TABLE);
+        db.execSQL(CREATE_TABLE_APPOINTMENT);
     }
 
     @Override
@@ -49,6 +51,22 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_CONTACTS, null, values);
     }
 
+    public List<Appointment> retrieveAllAppointments(SQLiteDatabase db){
+        List<Appointment> appointmentList = new ArrayList<Appointment>();
+        String sql = "SELECT * FROM "+TABLE_APPOINTMENTS;
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                Appointment appointment = new Appointment();
+                appointment.setName(cursor.getString(0));
+                appointment.setTime(cursor.getLong(1));
+                appointment.setParticipants(cursor.getString(2));
+            }while(cursor.moveToNext());
+            cursor.close();
+        }
+        return appointmentList;
+    }
 
     public List<Contact> retrieveAllContacts(SQLiteDatabase db){
         List<Contact> contactList = new ArrayList<Contact>();
