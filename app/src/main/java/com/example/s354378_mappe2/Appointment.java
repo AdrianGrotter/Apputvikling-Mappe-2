@@ -1,7 +1,6 @@
 package com.example.s354378_mappe2;
 
 public class Appointment {
-    long _ID;
     String name;
     String time;
     String participants;
