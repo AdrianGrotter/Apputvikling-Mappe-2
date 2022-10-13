@@ -26,12 +26,34 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.create_appointment);
 
         Button btnMain = (Button) findViewById(R.id.btnMain);
+        Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
+
+        input_name = (EditText) findViewById(R.id.inputName);
+        time = (EditText) findViewById(R.id.inputTime);
+        participants = (EditText) findViewById(R.id.inputParticipants);
+
+        dbHelper = new DBHandler(this);
+        db = dbHelper.getWritableDatabase();
 
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activityMain();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Appointment newApmnt = new Appointment();
+                newApmnt.name = input_name.getText().toString();
+                newApmnt.time = time.getText().toString();
+                newApmnt.participants = participants.getText().toString();
+
+                System.out.println(newApmnt.name + " " + newApmnt.time + " " + newApmnt.participants);
+
+                dbHelper.addAppointment(db, newApmnt);
             }
         });
 

@@ -12,16 +12,18 @@ import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     static String TABLE_CONTACTS = "Contacts";
-    static String TABLE_APPOINTMENTS = "Appointments";
-    static String KEY_NAME = "Name";
-    static String KEY_TIME = "Time";
-    static String KEY_PARTICIPANTS = "Participants";
     static String KEY_ID = "_ID";
     static String KEY_FIRST = "FirstName";
     static String KEY_LAST = "LastName";
     static String KEY_PHONE = "Phone";
+
+    static String TABLE_APPOINTMENTS = "Appointments";
+    static String KEY_APPOINTMENTS_ID = "_ID";
+    static String KEY_NAME = "Name";
+    static String KEY_TIME = "Time";
+    static String KEY_PARTICIPANTS = "Participants";
     static int DATABASE_VERSION = 3;
-    static String DATABASE_NAME = "Contacts";
+    static String DATABASE_NAME = "Appointments";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,17 +31,31 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE = "CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FIRST + " TEXT," + KEY_LAST + " TEXT," + KEY_PHONE + " TEXT" + ")";
-        String CREATE_TABLE_APPOINTMENT = "CREATE TABLE " + TABLE_APPOINTMENTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT," + KEY_TIME + " TEXT," + KEY_PARTICIPANTS + " TEXT" + ")";
+        String CREATE_TABLE = "CREATE TABLE " + TABLE_CONTACTS +
+                "(" +
+                    KEY_ID + " INTEGER PRIMARY KEY," +
+                    KEY_FIRST + " TEXT," +
+                    KEY_LAST + " TEXT," +
+                    KEY_PHONE + " TEXT" +
+                ")";
+        String CREATE_TABLE_APPOINTMENT = "CREATE TABLE " + TABLE_APPOINTMENTS +
+                "(" +
+                    KEY_APPOINTMENTS_ID + " INTEGER PRIMARY KEY," +
+                    KEY_NAME + " TEXT," +
+                    KEY_TIME + " TEXT," +
+                    KEY_PARTICIPANTS + " TEXT" +
+                ")";
         Log.d("SQL", CREATE_TABLE);
         Log.d("SQL", CREATE_TABLE_APPOINTMENT);
-        db.execSQL(CREATE_TABLE);
+        System.out.println("Creating table "+TABLE_APPOINTMENTS);
         db.execSQL(CREATE_TABLE_APPOINTMENT);
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_APPOINTMENTS);
         onCreate(db);
     }
 
@@ -51,22 +67,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_CONTACTS, null, values);
     }
 
-    public List<Appointment> retrieveAllAppointments(SQLiteDatabase db){
-        List<Appointment> appointmentList = new ArrayList<Appointment>();
-        String sql = "SELECT * FROM "+TABLE_APPOINTMENTS;
-        Cursor cursor = db.rawQuery(sql, null);
-
-        if(cursor.moveToFirst()){
-            do {
-                Appointment appointment = new Appointment();
-                appointment.setName(cursor.getString(0));
-                appointment.setTime(cursor.getLong(1));
-                appointment.setParticipants(cursor.getString(2));
-            }while(cursor.moveToNext());
-            cursor.close();
-        }
-        return appointmentList;
-    }
 
     public List<Contact> retrieveAllContacts(SQLiteDatabase db){
         List<Contact> contactList = new ArrayList<Contact>();
@@ -84,6 +84,32 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.close();
         }
         return contactList;
+    }
+
+    public void addAppointment(SQLiteDatabase db, Appointment apmnt){
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, apmnt.getName());
+        values.put(KEY_TIME, apmnt.getTime());
+        values.put(KEY_PARTICIPANTS, apmnt.getParticipants());
+        db.insert(TABLE_APPOINTMENTS, null, values);
+    }
+
+    public List<Appointment> retrieveAllAppointments(SQLiteDatabase db){
+        List<Appointment> apmntList = new ArrayList<Appointment>();
+        String sql = "SELECT * FROM "+TABLE_APPOINTMENTS;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToFirst()){
+            do{
+                Appointment apmnt = new Appointment();
+                apmnt.set_ID(cursor.getLong(0));
+                apmnt.setName(cursor.getString(1));
+                apmnt.setTime(cursor.getString(2));
+                apmnt.setParticipants(cursor.getString(3));
+                apmntList.add(apmnt);
+            }while(cursor.moveToNext());
+            cursor.close();
+        }
+        return apmntList;
     }
 
 }

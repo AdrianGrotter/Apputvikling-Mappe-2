@@ -44,7 +44,7 @@
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/inputFirstName"
+                android:id="@+id/inputName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
@@ -70,7 +70,7 @@
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/inputLastName"
+                android:id="@+id/inputTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
@@ -95,13 +95,13 @@
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/inputPhone"
+                android:id="@+id/inputParticipants"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:inputType="phone"
+                android:inputType="text"
                 android:text=""
                 android:textColor="#FFFFFF" />
 
