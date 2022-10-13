@@ -6,6 +6,7 @@
     <string name="titleDisplayContacts">Dine kontakter</string>
     <string name="btnSubmit">Registrer</string>
     <string name="btnShowContacts">Vis kontakter</string>
+    <string name="btnShowAppointments">Vis avtaler</string>
     <string name="btnReturn">Tilbake</string>
     <string name="inputFirst">First Name</string>
     <string name="inputLast">Last Name</string>

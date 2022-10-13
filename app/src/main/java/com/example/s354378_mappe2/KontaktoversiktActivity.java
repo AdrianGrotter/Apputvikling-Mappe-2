@@ -27,6 +27,7 @@ public class KontaktoversiktActivity extends AppCompatActivity {
 
 
         Button btnShowContacts = (Button) findViewById(R.id.btnShowContacts);
+        Button btnShowAppointments = (Button) findViewById(R.id.btnShowAppointments);
 
 
 
@@ -44,7 +45,7 @@ public class KontaktoversiktActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String output = "";
-                List<Contact> contactList= dbHelper.retrieveAllContacts(db);
+                List<Contact> contactList = dbHelper.retrieveAllContacts(db);
                 for (Contact myContact : contactList){
                     /*
                     output += "Id: "+ myContact.get_ID() +
@@ -53,6 +54,24 @@ public class KontaktoversiktActivity extends AppCompatActivity {
                             ", Telefonnummer: "+ myContact.getPhone() + "\n";
                     */
                     output += myContact.get_ID() + ", "+ myContact.getFirst() + " " + myContact.getLast() + ", " + myContact.getPhone() + "\n";
+                }
+                contactOutput.setText(output);
+            }
+        });
+
+        btnShowAppointments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String output = "";
+                List<Appointment> apmntList = dbHelper.retrieveAllAppointments(db);
+                for (Appointment myApmnt : apmntList){
+                    /*
+                    output += "Id: "+ myContact.get_ID() +
+                            ", Fornavn: "+myContact.getFirst() +
+                            ", Etternavn: "+ myContact.getLast() +
+                            ", Telefonnummer: "+ myContact.getPhone() + "\n";
+                    */
+                    output += myApmnt.getName() + ", "+ myApmnt.getTime() + " " + myApmnt.getParticipants() + "\n";
                 }
                 contactOutput.setText(output);
             }
