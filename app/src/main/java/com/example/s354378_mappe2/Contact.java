@@ -9,8 +9,14 @@ public class Contact {
     public Contact() {
     }
 
+    public Contact(String first, String last, String phone) {
+        this.first = first;
+        this.last = last;
+        this.phone = phone;
+    }
+
     public Contact(long _ID, String first, String last, String phone) {
-        this._ID =_ID;
+        this._ID = _ID;
         this.first = first;
         this.last = last;
         this.phone = phone;
