@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateAppointmentActivity extends AppCompatActivity {
     TextView feedback;
-    EditText input_name;
+    EditText name;
     EditText time;
     EditText participants;
 
@@ -28,7 +28,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         Button btnMain = (Button) findViewById(R.id.btnMain);
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
 
-        input_name = (EditText) findViewById(R.id.inputName);
+        name = (EditText) findViewById(R.id.inputName);
         time = (EditText) findViewById(R.id.inputTime);
         participants = (EditText) findViewById(R.id.inputParticipants);
 
@@ -47,7 +47,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Appointment newApmnt = new Appointment();
-                newApmnt.name = input_name.getText().toString();
+                newApmnt.name = name.getText().toString();
                 newApmnt.time = time.getText().toString();
                 newApmnt.participants = participants.getText().toString();
 
