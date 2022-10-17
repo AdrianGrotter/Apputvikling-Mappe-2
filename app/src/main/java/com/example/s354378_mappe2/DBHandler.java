@@ -71,6 +71,17 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_CONTACTS, null, values);
     }
 
+    public void editContact(SQLiteDatabase db, Contact contact){
+        ContentValues values = new ContentValues();
+        values.put(KEY_FIRST, contact.getFirst());
+        values.put(KEY_LAST, contact.getLast());
+        values.put(KEY_PHONE, contact.getPhone());
+        db.update(TABLE_CONTACTS, values, "_id = ?", new String[]{String.valueOf(contact.get_ID())});
+    }
+    public void deleteContact(SQLiteDatabase db, Contact contact){
+        db.delete(TABLE_CONTACTS, "_id = ?", new String[]{String.valueOf(contact.get_ID())});
+    }
+
 
     public List<Contact> retrieveAllContacts(SQLiteDatabase db){
         List<Contact> contactList = new ArrayList<Contact>();
@@ -96,6 +107,10 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_TIME, apmnt.getTime());
         values.put(KEY_PARTICIPANTS, apmnt.getParticipants());
         db.insert(TABLE_APPOINTMENTS, null, values);
+    }
+
+    public void deleteAppointment(SQLiteDatabase db, Appointment apmnt){
+        db.delete(TABLE_APPOINTMENTS, "_id=?", new String[]{String.valueOf(apmnt.get_ID())});
     }
 
     public List<Appointment> retrieveAllAppointments(SQLiteDatabase db){
