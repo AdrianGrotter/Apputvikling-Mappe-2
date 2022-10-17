@@ -20,13 +20,13 @@ public class DBHandler extends SQLiteOpenHelper {
     static String TABLE_APPOINTMENTS = "Appointments";
     static String KEY_APPOINTMENTS_ID = "_ID";
     static String KEY_NAME = "Name";
-    static String KEY_DATE = "Name";
+    static String KEY_DATE = "Date";
     static String KEY_TIME = "Time";
-    static String KEY_LOCATION = "Name";
+    static String KEY_LOCATION = "Location";
     static String KEY_PARTICIPANTS = "Participants";
-    static String KEY_MESSAGE = "Name";
+    static String KEY_MESSAGE = "Message";
     static int DATABASE_VERSION = 3;
-    static String DATABASE_NAME = "Appointments";
+    static String DATABASE_NAME = "Database_name";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -111,6 +111,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_LOCATION, apmnt.getLocation());
         values.put(KEY_PARTICIPANTS, apmnt.getParticipants());
         values.put(KEY_MESSAGE, apmnt.getMessage());
+        System.out.println(values);
         db.insert(TABLE_APPOINTMENTS, null, values);
     }
 
@@ -127,8 +128,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 Appointment apmnt = new Appointment();
                 apmnt.set_ID(cursor.getLong(0));
                 apmnt.setName(cursor.getString(1));
-                apmnt.setTime(cursor.getString(2));
-                apmnt.setParticipants(cursor.getString(3));
+                apmnt.setDate(cursor.getString(2));
+                apmnt.setTime(cursor.getString(3));
+                apmnt.setLocation(cursor.getString(4));
+                apmnt.setParticipants(cursor.getString(5));
+                apmnt.setMessage(cursor.getString(6));
+
                 apmntList.add(apmnt);
             }while(cursor.moveToNext());
             cursor.close();

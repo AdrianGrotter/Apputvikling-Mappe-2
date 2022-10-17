@@ -50,7 +50,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:text=""
                 android:textColor="#FFFFFF" />
 
@@ -76,7 +76,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="datetime"
                 android:text=""
                 android:textColor="#FFFFFF" />
         </LinearLayout>
@@ -101,7 +101,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="datetime"
                 android:text=""
                 android:textColor="#FFFFFF" />
         </LinearLayout>
@@ -126,7 +126,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:text=""
                 android:textColor="#FFFFFF" />
 

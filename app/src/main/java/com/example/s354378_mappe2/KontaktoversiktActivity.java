@@ -71,7 +71,7 @@ public class KontaktoversiktActivity extends AppCompatActivity {
                             ", Etternavn: "+ myContact.getLast() +
                             ", Telefonnummer: "+ myContact.getPhone() + "\n";
                     */
-                    output += myApmnt.getName() + ", "+ myApmnt.getTime() + " " + myApmnt.getParticipants() + "\n";
+                    output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myApmnt.getParticipants() + ", " + myApmnt.getMessage() + "\n";
                 }
                 contactOutput.setText(output);
             }
