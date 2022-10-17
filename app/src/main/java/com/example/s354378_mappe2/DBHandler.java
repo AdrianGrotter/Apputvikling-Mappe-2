@@ -20,7 +20,9 @@ public class DBHandler extends SQLiteOpenHelper {
     static String TABLE_APPOINTMENTS = "Appointments";
     static String KEY_APPOINTMENTS_ID = "_ID";
     static String KEY_NAME = "Name";
+    static String KEY_DATE = "Name";
     static String KEY_TIME = "Time";
+    static String KEY_LOCATION = "Name";
     static String KEY_PARTICIPANTS = "Participants";
     static int DATABASE_VERSION = 3;
     static String DATABASE_NAME = "Appointments";
@@ -42,7 +44,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 "(" +
                     KEY_APPOINTMENTS_ID + " INTEGER PRIMARY KEY," +
                     KEY_NAME + " TEXT," +
+                    KEY_DATE + " TEXT," +
                     KEY_TIME + " TEXT," +
+                    KEY_LOCATION + " TEXT," +
                     KEY_PARTICIPANTS + " TEXT" +
                 ")";
         Log.d("SQL", CREATE_TABLE);

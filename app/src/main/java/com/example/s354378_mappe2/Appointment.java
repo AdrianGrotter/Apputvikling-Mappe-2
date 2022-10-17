@@ -3,15 +3,28 @@ package com.example.s354378_mappe2;
 public class Appointment {
     long _ID;
     String name;
+    String date;
     String time;
+    String location;
     String participants;
 
     public Appointment() {
     }
 
-    public Appointment(String name, String time, String participants) {
+    public Appointment(String name, String date, String time, String location, String participants) {
         this.name = name;
+        this.date = date;
         this.time = time;
+        this.location = location;
+        this.participants = participants;
+    }
+
+    public Appointment(long _ID, String name, String date, String time, String location, String participants) {
+        this._ID = _ID;
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.location = location;
         this.participants = participants;
     }
 
@@ -31,12 +44,28 @@ public class Appointment {
         this.name = name;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getTime() {
         return time;
     }
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getParticipants() {
