@@ -21,8 +21,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="366dp"
-        android:layout_height="136dp"
+        android:layout_width="371dp"
+        android:layout_height="336dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/labelFirst"
+                android:id="@+id/labelName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,6 +54,31 @@
                 android:text=""
                 android:textColor="#FFFFFF" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dato:"
+                android:textColor="#FFFFFF" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,19 +108,71 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/labelPhone"
+                android:id="@+id/labelLocation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Deltakere"
+                android:text="Sted:"
+                android:textColor="#FFFFFF" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelFriend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Venn:"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/inputParticipants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Melding:"
+                android:textColor="#FFFFFF" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
