@@ -21,15 +21,11 @@ public class KontaktoversiktActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kontaktoversikt);
 
-        Button btnMain = (Button) findViewById(R.id.btnMain);
-
         contactOutput = (TextView) findViewById(R.id.contactOutput);
 
-
+        Button btnMain = (Button) findViewById(R.id.btnMain);
         Button btnShowContacts = (Button) findViewById(R.id.btnShowContacts);
         Button btnShowAppointments = (Button) findViewById(R.id.btnShowAppointments);
-
-
 
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
@@ -47,12 +43,6 @@ public class KontaktoversiktActivity extends AppCompatActivity {
                 String output = "";
                 List<Contact> contactList = dbHelper.retrieveAllContacts(db);
                 for (Contact myContact : contactList){
-                    /*
-                    output += "Id: "+ myContact.get_ID() +
-                            ", Fornavn: "+myContact.getFirst() +
-                            ", Etternavn: "+ myContact.getLast() +
-                            ", Telefonnummer: "+ myContact.getPhone() + "\n";
-                    */
                     output += myContact.get_ID() + ", "+ myContact.getFirst() + " " + myContact.getLast() + ", " + myContact.getPhone() + "\n";
                 }
                 contactOutput.setText(output);
@@ -65,12 +55,6 @@ public class KontaktoversiktActivity extends AppCompatActivity {
                 String output = "";
                 List<Appointment> apmntList = dbHelper.retrieveAllAppointments(db);
                 for (Appointment myApmnt : apmntList){
-                    /*
-                    output += "Id: "+ myContact.get_ID() +
-                            ", Fornavn: "+myContact.getFirst() +
-                            ", Etternavn: "+ myContact.getLast() +
-                            ", Telefonnummer: "+ myContact.getPhone() + "\n";
-                    */
                     output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myApmnt.getParticipants() + ", " + myApmnt.getMessage() + "\n";
                 }
                 contactOutput.setText(output);
