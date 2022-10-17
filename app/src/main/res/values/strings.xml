@@ -4,13 +4,17 @@
     <string name="titleAppointment">Opprett avtale</string>
     <string name="titleHome">Velkommen</string>
     <string name="titleDisplayContacts">Dine kontakter</string>
+
     <string name="btnSubmit">Registrer</string>
     <string name="btnShowContacts">Vis kontakter</string>
     <string name="btnShowAppointments">Vis avtaler</string>
+    <string name="btnCreateContact">Legg til kontakt</string>
+    <string name="btnCreateAppointment">Lag avtale</string>
+    <string name="btnOverview">Se oversikt</string>
     <string name="btnReturn">Tilbake</string>
+
     <string name="inputFirst">Fornavn</string>
     <string name="inputLast">Etternavn</string>
-
     <string name="labelFirst">Fornavn:</string>
     <string name="labelLast">Etternavn:</string>
     <string name="labelPhone">Telefonnummer:</string>

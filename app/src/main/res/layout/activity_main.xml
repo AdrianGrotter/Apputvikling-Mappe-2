@@ -35,16 +35,7 @@
             android:layout_marginVertical="10dp"
             android:background="@drawable/button_border"
             android:textColor="#FFFFFF"
-            android:text="Legg til kontakt" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnShowContactsPage"
-            android:layout_width="120dp"
-            android:layout_height="48dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/button_border"
-            android:text="Se kontakter"
-            android:textColor="#FFFFFF" />
+            android:text="@string/btnCreateContact" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCreateAppointment"
@@ -52,7 +43,16 @@
             android:layout_height="48dp"
             android:layout_marginVertical="10dp"
             android:background="@drawable/button_border"
-            android:text="Lag avtale"
+            android:text="@string/btnCreateAppointment"
+            android:textColor="#FFFFFF" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnShowContactsPage"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/button_border"
+            android:text="@string/btnOverview"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
