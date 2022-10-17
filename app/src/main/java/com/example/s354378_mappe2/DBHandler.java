@@ -24,6 +24,7 @@ public class DBHandler extends SQLiteOpenHelper {
     static String KEY_TIME = "Time";
     static String KEY_LOCATION = "Name";
     static String KEY_PARTICIPANTS = "Participants";
+    static String KEY_MESSAGE = "Name";
     static int DATABASE_VERSION = 3;
     static String DATABASE_NAME = "Appointments";
 
@@ -47,7 +48,8 @@ public class DBHandler extends SQLiteOpenHelper {
                     KEY_DATE + " TEXT," +
                     KEY_TIME + " TEXT," +
                     KEY_LOCATION + " TEXT," +
-                    KEY_PARTICIPANTS + " TEXT" +
+                    KEY_PARTICIPANTS + " TEXT," +
+                    KEY_MESSAGE + " TEXT" +
                 ")";
         Log.d("SQL", CREATE_TABLE);
         Log.d("SQL", CREATE_TABLE_APPOINTMENT);
@@ -108,6 +110,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_TIME, apmnt.getTime());
         values.put(KEY_LOCATION, apmnt.getLocation());
         values.put(KEY_PARTICIPANTS, apmnt.getParticipants());
+        values.put(KEY_MESSAGE, apmnt.getMessage());
         db.insert(TABLE_APPOINTMENTS, null, values);
     }
 

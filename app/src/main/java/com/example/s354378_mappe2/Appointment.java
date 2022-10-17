@@ -7,25 +7,28 @@ public class Appointment {
     String time;
     String location;
     String participants;
+    String message;
 
     public Appointment() {
     }
 
-    public Appointment(String name, String date, String time, String location, String participants) {
+    public Appointment(String name, String date, String time, String location, String participants, String message) {
         this.name = name;
         this.date = date;
         this.time = time;
         this.location = location;
         this.participants = participants;
+        this.message = message;
     }
 
-    public Appointment(long _ID, String name, String date, String time, String location, String participants) {
+    public Appointment(long _ID, String name, String date, String time, String location, String participants, String message) {
         this._ID = _ID;
         this.name = name;
         this.date = date;
         this.time = time;
         this.location = location;
         this.participants = participants;
+        this.message = message;
     }
 
     public long get_ID() {
@@ -74,5 +77,13 @@ public class Appointment {
 
     public void setParticipants(String participants) {
         this.participants = participants;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
