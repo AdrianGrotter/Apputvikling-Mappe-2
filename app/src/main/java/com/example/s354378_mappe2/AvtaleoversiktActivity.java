@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public class KontaktoversiktActivity extends AppCompatActivity {
+public class AvtaleoversiktActivity extends AppCompatActivity {
     TextView contactOutput;
 
     DBHandler dbHelper;
@@ -36,12 +36,19 @@ public class KontaktoversiktActivity extends AppCompatActivity {
         });
 
         String output = "";
+        List<Appointment> apmntList = dbHelper.retrieveAllAppointments(db);
         List<Contact> contactList = dbHelper.retrieveAllContacts(db);
-        for (Contact myContact : contactList){
-            output += myContact.get_ID() + ", "+ myContact.getFirst() + " " + myContact.getLast() + ", " + myContact.getPhone() + "\n";
+        for (Appointment myApmnt : apmntList){
+            Contact myContact = contactList.get(0);
+            for (Contact c : contactList){
+                if(c.get_ID() == myApmnt.getParticipants()){
+                    myContact = c;
+                    break;
+                }
+            }
+            output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myContact.getFirst() + ", " + myApmnt.getMessage() + "\n";
         }
         contactOutput.setText(output);
-
     }
     private void activityMain() {
         Intent myIntent = new Intent(this, MainActivity.class);

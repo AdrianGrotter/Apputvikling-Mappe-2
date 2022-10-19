@@ -16,6 +16,7 @@
         <activity android:name=".CreateContactActivity"></activity>
         <activity android:name=".KontaktoversiktActivity"></activity>
         <activity android:name=".CreateAppointmentActivity"></activity>
+        <activity android:name=".AvtaleoversiktActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
