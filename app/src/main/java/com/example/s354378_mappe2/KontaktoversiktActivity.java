@@ -54,8 +54,16 @@ public class KontaktoversiktActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String output = "";
                 List<Appointment> apmntList = dbHelper.retrieveAllAppointments(db);
+                List<Contact> contactList = dbHelper.retrieveAllContacts(db);
                 for (Appointment myApmnt : apmntList){
-                    output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myApmnt.getParticipants() + ", " + myApmnt.getMessage() + "\n";
+                    Contact myContact = contactList.get(0);
+                    for (Contact c : contactList){
+                        if(c.get_ID() == myApmnt.getParticipants()){
+                            myContact = c;
+                            break;
+                        }
+                    }
+                    output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myContact.getFirst() + ", " + myApmnt.getMessage() + "\n";
                 }
                 contactOutput.setText(output);
             }

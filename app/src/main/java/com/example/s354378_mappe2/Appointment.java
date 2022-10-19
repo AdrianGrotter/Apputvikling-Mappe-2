@@ -6,13 +6,13 @@ public class Appointment {
     String date;
     String time;
     String location;
-    String participants;
+    long participants;
     String message;
 
     public Appointment() {
     }
 
-    public Appointment(String name, String date, String time, String location, String participants, String message) {
+    public Appointment(String name, String date, String time, String location, long participants, String message) {
         this.name = name;
         this.date = date;
         this.time = time;
@@ -21,7 +21,7 @@ public class Appointment {
         this.message = message;
     }
 
-    public Appointment(long _ID, String name, String date, String time, String location, String participants, String message) {
+    public Appointment(long _ID, String name, String date, String time, String location, long participants, String message) {
         this._ID = _ID;
         this.name = name;
         this.date = date;
@@ -71,11 +71,11 @@ public class Appointment {
         this.location = location;
     }
 
-    public String getParticipants() {
+    public long getParticipants() {
         return participants;
     }
 
-    public void setParticipants(String participants) {
+    public void setParticipants(long participants) {
         this.participants = participants;
     }
 

@@ -131,7 +131,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 apmnt.setDate(cursor.getString(2));
                 apmnt.setTime(cursor.getString(3));
                 apmnt.setLocation(cursor.getString(4));
-                apmnt.setParticipants(cursor.getString(5));
+                apmnt.setParticipants(cursor.getLong(5));
                 apmnt.setMessage(cursor.getString(6));
 
                 apmntList.add(apmnt);
