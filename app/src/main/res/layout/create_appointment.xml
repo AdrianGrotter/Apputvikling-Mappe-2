@@ -41,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Navn:"
+                android:text="@string/labelName"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -67,7 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dato:"
+                android:text="@string/labelDate"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -92,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tid:"
+                android:text="@string/labelTime"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -117,7 +117,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sted:"
+                android:text="@string/labelLocation"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -143,7 +143,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Venn:"
+                android:text="@string/labelParticipant"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -169,7 +169,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Melding:"
+                android:text="@string/labelMessage"
                 android:textColor="#FFFFFF" />
 
             <androidx.appcompat.widget.AppCompatEditText

@@ -1,21 +1,28 @@
 <resources>
     <string name="app_name">s354378-mappe2</string>
+
     <string name="title">Legg til venn</string>
     <string name="titleAppointment">Opprett avtale</string>
     <string name="titleHome">Velkommen</string>
     <string name="titleDisplayContacts">Dine kontakter</string>
 
-    <string name="btnSubmit">Registrer</string>
     <string name="btnShowContacts">Vis kontakter</string>
     <string name="btnShowAppointments">Vis avtaler</string>
     <string name="btnCreateContact">Legg til kontakt</string>
     <string name="btnCreateAppointment">Lag avtale</string>
     <string name="btnOverview">Se oversikt</string>
-    <string name="btnReturn">Tilbake</string>
 
     <string name="inputFirst">Fornavn</string>
     <string name="inputLast">Etternavn</string>
+
     <string name="labelFirst">Fornavn:</string>
     <string name="labelLast">Etternavn:</string>
     <string name="labelPhone">Telefonnummer:</string>
+
+    <string name="labelName">Navn:</string>
+    <string name="labelDate">Dato:</string>
+    <string name="labelTime">Tid:</string>
+    <string name="labelLocation">Sted:</string>
+    <string name="labelParticipant">Venn:</string>
+    <string name="labelMessage">Melding:</string>
 </resources>
