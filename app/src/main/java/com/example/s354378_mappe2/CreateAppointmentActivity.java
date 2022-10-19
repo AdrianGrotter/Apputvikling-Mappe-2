@@ -80,8 +80,10 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                 newApmnt.location = location.getText().toString();
                 newApmnt.participants = Long.toString(contactList.get(selectedIndex).get_ID());
                 newApmnt.message = message.getText().toString();
-                System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
 
+                if(message.getText().toString().equals("")) newApmnt.message = "Standard message when no message is added";
+
+                System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
                 dbHelper.addAppointment(db, newApmnt);
             }
         });
