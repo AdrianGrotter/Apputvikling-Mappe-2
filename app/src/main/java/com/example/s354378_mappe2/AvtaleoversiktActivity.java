@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -21,12 +23,26 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.avtaleoversikt);
 
-        appointmentOutput = (TextView) findViewById(R.id.appointmentOutput);
-
         Button btnMain = (Button) findViewById(R.id.btnMain);
 
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
+
+        RecyclerView rvAppointments = (RecyclerView) findViewById(R.id.rvAppointments);
+        List<Appointment> appointmentList = dbHelper.retrieveAllAppointments(db);
+        List<Contact> contactList = dbHelper.retrieveAllContacts(db);
+        for(Appointment a : appointmentList){
+            for(Contact c : contactList){
+                if(Long.parseLong(a.getParticipants()) == c.get_ID()){
+                    a.setParticipants(c.first);
+                    break;
+                }
+            }
+        }
+
+        AppointmentAdapter adapter = new AppointmentAdapter(appointmentList);
+        rvAppointments.setAdapter(adapter);
+        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,20 +51,18 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
             }
         });
 
-        String output = "";
+        /*String output = "";
         List<Appointment> apmntList = dbHelper.retrieveAllAppointments(db);
         List<Contact> contactList = dbHelper.retrieveAllContacts(db);
         for (Appointment myApmnt : apmntList){
             Contact myContact = contactList.get(0);
             for (Contact c : contactList){
-                if(c.get_ID() == myApmnt.getParticipants()){
+                if(c.get_ID() == Long.parseLong(myApmnt.getParticipants())){
                     myContact = c;
                     break;
                 }
             }
-            output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myContact.getFirst() + ", " + myApmnt.getMessage() + "\n";
-        }
-        appointmentOutput.setText(output);
+       }*/
     }
     private void activityMain() {
         Intent myIntent = new Intent(this, MainActivity.class);

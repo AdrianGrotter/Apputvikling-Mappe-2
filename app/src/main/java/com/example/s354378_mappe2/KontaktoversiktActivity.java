@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class KontaktoversiktActivity extends AppCompatActivity {
-    TextView contactOutput;
 
     DBHandler dbHelper;
     SQLiteDatabase db;

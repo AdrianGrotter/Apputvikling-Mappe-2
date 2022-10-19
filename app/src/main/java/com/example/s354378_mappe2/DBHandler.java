@@ -115,8 +115,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_APPOINTMENTS, null, values);
     }
 
-    public void deleteAppointment(SQLiteDatabase db, Appointment apmnt){
-        db.delete(TABLE_APPOINTMENTS, "_id=?", new String[]{String.valueOf(apmnt.get_ID())});
+    public void deleteAppointment(SQLiteDatabase db, String id){
+        db.delete(TABLE_APPOINTMENTS, "_id=?", new String[]{String.valueOf(Long.parseLong(id))});
     }
 
     public List<Appointment> retrieveAllAppointments(SQLiteDatabase db){
@@ -131,7 +131,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 apmnt.setDate(cursor.getString(2));
                 apmnt.setTime(cursor.getString(3));
                 apmnt.setLocation(cursor.getString(4));
-                apmnt.setParticipants(cursor.getLong(5));
+                apmnt.setParticipants(cursor.getString(5));
                 apmnt.setMessage(cursor.getString(6));
 
                 apmntList.add(apmnt);

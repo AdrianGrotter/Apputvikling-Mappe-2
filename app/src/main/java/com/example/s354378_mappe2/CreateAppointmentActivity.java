@@ -78,7 +78,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                 newApmnt.date = date.getText().toString();
                 newApmnt.time = time.getText().toString();
                 newApmnt.location = location.getText().toString();
-                newApmnt.participants = contactList.get(selectedIndex).get_ID();
+                newApmnt.participants = Long.toString(contactList.get(selectedIndex).get_ID());
                 newApmnt.message = message.getText().toString();
                 System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
 
