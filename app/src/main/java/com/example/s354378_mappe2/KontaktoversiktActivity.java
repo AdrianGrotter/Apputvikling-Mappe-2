@@ -24,7 +24,6 @@ public class KontaktoversiktActivity extends AppCompatActivity {
         setContentView(R.layout.kontaktoversikt);
 
         Button btnMain = (Button) findViewById(R.id.btnMain);
-        Button delete = (Button) findViewById(R.id.delete);
 
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
@@ -38,13 +37,13 @@ public class KontaktoversiktActivity extends AppCompatActivity {
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activityMain();
+                mainActivity();
             }
         });
 
     }
 
-    private void activityMain() {
+    private void mainActivity() {
         Intent myIntent = new Intent(this, MainActivity.class);
         startActivity(myIntent);
     }

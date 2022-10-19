@@ -1,6 +1,7 @@
 package com.example.s354378_mappe2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         Button button1 = holder.delete;
         button1.setText("delete");
         button1.setTag(contact.get_ID());
+        Button button2 = holder.edit;
+        button2.setText("edit");
+        button2.setTag(contact.get_ID());
 
 
     }
@@ -65,6 +69,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         public TextView lastName;
         public TextView phone;
         public Button delete;
+        public Button edit;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -72,18 +77,30 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             firstName = (TextView) itemView.findViewById(R.id.firstName);
             lastName = (TextView) itemView.findViewById(R.id.lastName);
             phone = (TextView) itemView.findViewById(R.id.phone);
-            delete = (Button)itemView.findViewById(R.id.delete);
+            delete = (Button) itemView.findViewById(R.id.delete);
+            edit = (Button) itemView.findViewById(R.id.edit);
             delete.setOnClickListener(this);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Edit: " + edit.getTag());
+                    Intent intent = new Intent(view.getContext(), EditContactActivity.class);
+                    intent.putExtra("id", edit.getTag().toString());
+                    view.getContext().startActivity(intent);
+                }
+            });
 
         }
 
         @Override
         public void onClick(View view) {
             System.out.println(delete.getTag());
+            int pos = getAdapterPosition();
             dbHelper.deleteContact(db, delete.getTag().toString());
             mContacts.clear();
             mContacts.addAll(dbHelper.retrieveAllContacts(db));
-            notifyDataSetChanged();
+            notifyItemRemoved(pos);
         }
+
     }
 }
