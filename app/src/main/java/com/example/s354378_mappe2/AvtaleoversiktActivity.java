@@ -12,16 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 public class AvtaleoversiktActivity extends AppCompatActivity {
-    TextView contactOutput;
+    TextView appointmentOutput;
 
     DBHandler dbHelper;
     SQLiteDatabase db;
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kontaktoversikt);
+        setContentView(R.layout.avtaleoversikt);
 
-        contactOutput = (TextView) findViewById(R.id.contactOutput);
+        appointmentOutput = (TextView) findViewById(R.id.appointmentOutput);
 
         Button btnMain = (Button) findViewById(R.id.btnMain);
 
@@ -48,7 +48,7 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
             }
             output += myApmnt.getName() + ", " + myApmnt.getDate() + ", " + myApmnt.getTime() + " " + myApmnt.getLocation() + ", " + myContact.getFirst() + ", " + myApmnt.getMessage() + "\n";
         }
-        contactOutput.setText(output);
+        appointmentOutput.setText(output);
     }
     private void activityMain() {
         Intent myIntent = new Intent(this, MainActivity.class);

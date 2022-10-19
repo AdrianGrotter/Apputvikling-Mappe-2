@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -21,12 +23,16 @@ public class KontaktoversiktActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kontaktoversikt);
 
-        contactOutput = (TextView) findViewById(R.id.contactOutput);
-
         Button btnMain = (Button) findViewById(R.id.btnMain);
 
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
+
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        List<Contact> contactList = dbHelper.retrieveAllContacts(db);
+        ContactsAdapter adapter = new ContactsAdapter(contactList);
+        rvContacts.setAdapter(adapter);
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,13 +40,6 @@ public class KontaktoversiktActivity extends AppCompatActivity {
                 activityMain();
             }
         });
-
-        String output = "";
-        List<Contact> contactList = dbHelper.retrieveAllContacts(db);
-        for (Contact myContact : contactList){
-            output += myContact.get_ID() + ", "+ myContact.getFirst() + " " + myContact.getLast() + ", " + myContact.getPhone() + "\n";
-        }
-        contactOutput.setText(output);
 
     }
     private void activityMain() {
