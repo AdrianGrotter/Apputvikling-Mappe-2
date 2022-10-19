@@ -71,11 +71,10 @@
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_border"
-            android:text="Placeholder"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/delete_48px"
             android:layout_gravity="center_vertical"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:textColor="@color/white"/>
 
 
     </LinearLayout>

@@ -50,10 +50,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         TextView textView3 = holder.phone;
         textView3.setText(contact.getPhone());
         Button button1 = holder.delete;
-        button1.setText("delete");
         button1.setTag(contact.get_ID());
         Button button2 = holder.edit;
-        button2.setText("edit");
         button2.setTag(contact.get_ID());
 
 

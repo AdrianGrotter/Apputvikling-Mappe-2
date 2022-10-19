@@ -56,9 +56,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         textView6.setText(appointment.getMessage());
 
         Button button1 = holder.delete;
-        button1.setText("delete");
         button1.setTag(appointment.get_ID());
-        String test = Long.toString(appointment.get_ID());
 
 
     }
