@@ -80,8 +80,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PHONE, contact.getPhone());
         db.update(TABLE_CONTACTS, values, "_id = ?", new String[]{String.valueOf(contact.get_ID())});
     }
-    public void deleteContact(SQLiteDatabase db, Contact contact){
-        db.delete(TABLE_CONTACTS, "_id = ?", new String[]{String.valueOf(contact.get_ID())});
+    public void deleteContact(SQLiteDatabase db, String id){
+        db.delete(TABLE_CONTACTS, "_id = ?", new String[]{String.valueOf(id)});
     }
 
 

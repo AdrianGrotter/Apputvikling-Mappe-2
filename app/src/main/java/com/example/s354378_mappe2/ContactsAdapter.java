@@ -17,7 +17,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
     DBHandler dbHelper;
     SQLiteDatabase db;
-    private List<Contact> mContacts;
+    private final List<Contact> mContacts;
 
     public ContactsAdapter (List<Contact> contacts){
         mContacts = contacts;
@@ -50,7 +50,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         textView3.setText(contact.getPhone());
         Button button1 = holder.delete;
         button1.setText("delete");
-        button1.setEnabled(true);
+        button1.setTag(contact.get_ID());
 
 
     }
@@ -60,7 +60,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         return mContacts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView firstName;
         public TextView lastName;
         public TextView phone;
@@ -73,7 +73,17 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             lastName = (TextView) itemView.findViewById(R.id.lastName);
             phone = (TextView) itemView.findViewById(R.id.phone);
             delete = (Button)itemView.findViewById(R.id.delete);
+            delete.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            System.out.println(delete.getTag());
+            dbHelper.deleteContact(db, delete.getTag().toString());
+            mContacts.clear();
+            mContacts.addAll(dbHelper.retrieveAllContacts(db));
+            notifyDataSetChanged();
         }
     }
 }

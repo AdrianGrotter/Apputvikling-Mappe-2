@@ -36,6 +36,7 @@ public class CreateContactActivity extends AppCompatActivity {
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
 
 
+
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
 
