@@ -1,6 +1,8 @@
 package com.example.s354378_mappe2;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -81,7 +83,10 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                 newApmnt.participants = Long.toString(contactList.get(selectedIndex).get_ID());
                 newApmnt.message = message.getText().toString();
 
-                if(message.getText().toString().equals("")) newApmnt.message = "Standard message when no message is added";
+                if(message.getText().toString().equals("")){
+                    SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
+                    newApmnt.message = sp.getString("standardMessage", "");
+                }
 
                 System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
                 dbHelper.addAppointment(db, newApmnt);

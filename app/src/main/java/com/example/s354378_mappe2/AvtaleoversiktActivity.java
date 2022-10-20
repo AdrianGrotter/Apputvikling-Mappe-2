@@ -1,6 +1,8 @@
 package com.example.s354378_mappe2;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +33,7 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
         RecyclerView rvAppointments = (RecyclerView) findViewById(R.id.rvAppointments);
         List<Appointment> appointmentList = dbHelper.retrieveAllAppointments(db);
         List<Contact> contactList = dbHelper.retrieveAllContacts(db);
+
         for(Appointment a : appointmentList){
             for(Contact c : contactList){
                 if(Long.parseLong(a.getParticipants()) == c.get_ID()){
@@ -50,19 +53,6 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
                 activityMain();
             }
         });
-
-        /*String output = "";
-        List<Appointment> apmntList = dbHelper.retrieveAllAppointments(db);
-        List<Contact> contactList = dbHelper.retrieveAllContacts(db);
-        for (Appointment myApmnt : apmntList){
-            Contact myContact = contactList.get(0);
-            for (Contact c : contactList){
-                if(c.get_ID() == Long.parseLong(myApmnt.getParticipants())){
-                    myContact = c;
-                    break;
-                }
-            }
-       }*/
     }
     private void activityMain() {
         Intent myIntent = new Intent(this, MainActivity.class);
