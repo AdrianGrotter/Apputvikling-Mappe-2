@@ -1,16 +1,14 @@
 package com.example.s354378_mappe2;
-
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public class Utilities extends AppCompatActivity {
+public class Utilities {
 
-    DBHandler dbHelper;
-    SQLiteDatabase db;
+
     public static String getTodaysDate()
     {
         Calendar cal = Calendar.getInstance();
@@ -57,8 +55,11 @@ public class Utilities extends AppCompatActivity {
         return "JAN";
     }
 
-    public static List<Appointment> buildAppointmentList(){
-        dbHelper = new DBHandler(getApplicationContext());
+    public static List<Appointment> buildAppointmentList(Context context){
+
+        DBHandler dbHelper;
+        SQLiteDatabase db;
+        dbHelper = new DBHandler(context);
         db = dbHelper.getWritableDatabase();
 
         List<Appointment> appointmentList = dbHelper.retrieveAllAppointments(db);

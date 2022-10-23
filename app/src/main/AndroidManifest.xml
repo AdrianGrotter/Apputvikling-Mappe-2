@@ -19,7 +19,7 @@
         <activity android:name=".AvtaleoversiktActivity"/>
         <activity android:name=".EditContactActivity"/>
         <service android:name=".MinSendService"/>
-        <service android:name=".MinPeriodisk"></service>
+        <service android:name=".MinPeriodisk"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

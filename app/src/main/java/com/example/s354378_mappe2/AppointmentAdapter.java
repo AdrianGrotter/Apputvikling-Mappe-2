@@ -1,7 +1,6 @@
 package com.example.s354378_mappe2;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     DBHandler dbHelper;
     SQLiteDatabase db;
     private final List<Appointment> mAppointments;
+    Context savedContext;
 
     public AppointmentAdapter (List<Appointment> appointments){
         mAppointments = appointments;
@@ -26,10 +26,10 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @NonNull
     @Override
     public AppointmentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        savedContext = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(savedContext);
 
-        dbHelper = new DBHandler(context);
+        dbHelper = new DBHandler(savedContext);
         db = dbHelper.getWritableDatabase();
 
         View AppointmentView = inflater.inflate(R.layout.item_appointment, parent, false);
@@ -97,7 +97,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             int pos = getAdapterPosition();
             dbHelper.deleteAppointment(db, delete.getTag().toString());
             mAppointments.clear();
-            mAppointments.addAll(Utilities.buildAppointmentList());
+            mAppointments.addAll(Utilities.buildAppointmentList(savedContext));
             notifyItemRemoved(pos);
         }
 
