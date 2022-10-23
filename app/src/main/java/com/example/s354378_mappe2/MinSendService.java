@@ -6,14 +6,12 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.util.Calendar;
 import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import java.util.Date;
 import java.util.List;
 
 public class MinSendService extends Service {
@@ -35,7 +33,7 @@ public class MinSendService extends Service {
         StringBuilder test = new StringBuilder();
         int myCounter = 0;
         for (Appointment a : myAppointments){
-            if (a.getDate().equals(TimeData.getTodaysDate())){
+            if (a.getDate().equals(Utilities.getTodaysDate())){
                 myCounter++;
             }
         }

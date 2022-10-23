@@ -31,17 +31,7 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         RecyclerView rvAppointments = (RecyclerView) findViewById(R.id.rvAppointments);
-        List<Appointment> appointmentList = dbHelper.retrieveAllAppointments(db);
-        List<Contact> contactList = dbHelper.retrieveAllContacts(db);
-
-        for(Appointment a : appointmentList){
-            for(Contact c : contactList){
-                if(Long.parseLong(a.getParticipants()) == c.get_ID()){
-                    a.setParticipants(c.first);
-                    break;
-                }
-            }
-        }
+        List<Appointment> appointmentList = Utilities.buildAppointmentList();
 
         AppointmentAdapter adapter = new AppointmentAdapter(appointmentList);
         rvAppointments.setAdapter(adapter);

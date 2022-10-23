@@ -1,8 +1,16 @@
 package com.example.s354378_mappe2;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 
-public class TimeData {
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
+
+public class Utilities extends AppCompatActivity {
+
+    DBHandler dbHelper;
+    SQLiteDatabase db;
     public static String getTodaysDate()
     {
         Calendar cal = Calendar.getInstance();
@@ -47,5 +55,23 @@ public class TimeData {
 
         //default should never happen
         return "JAN";
+    }
+
+    public static List<Appointment> buildAppointmentList(){
+        dbHelper = new DBHandler(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
+
+        List<Appointment> appointmentList = dbHelper.retrieveAllAppointments(db);
+        List<Contact> contactList = dbHelper.retrieveAllContacts(db);
+
+        for(Appointment a : appointmentList){
+            for(Contact c : contactList){
+                if(Long.parseLong(a.getParticipants()) == c.get_ID()){
+                    a.setParticipants(c.first);
+                    break;
+                }
+            }
+        }
+        return appointmentList;
     }
 }

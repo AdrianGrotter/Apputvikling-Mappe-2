@@ -75,7 +75,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         public TextView message;
 
         public Button delete;
-        public Button edit;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -98,7 +97,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             int pos = getAdapterPosition();
             dbHelper.deleteAppointment(db, delete.getTag().toString());
             mAppointments.clear();
-            mAppointments.addAll(dbHelper.retrieveAllAppointments(db));
+            mAppointments.addAll(Utilities.buildAppointmentList());
             notifyItemRemoved(pos);
         }
 
