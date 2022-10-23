@@ -6,7 +6,9 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,8 +40,14 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("smsTime", "0500");
         editor.apply();
 
+        BroadcastReceiver myBroadcastReceiver = new MinBroadcastReceiver();
+        IntentFilter filter = new IntentFilter("com.example.service.MITTSIGNAL");
+        filter.addAction("com.example.service.MITTSIGNAL");
+        this.registerReceiver(myBroadcastReceiver, filter);
+
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
+        startService(new View(this));
 
 
         btnRegistrer.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +103,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }*/
+
+    public void startService (View v){
+        Intent intent = new Intent();
+        intent.setAction("com.example.service.MITTSIGNAL");
+        sendBroadcast(intent);
+    }
 
     private void activityAddContacts() {
         Intent myIntent = new Intent(this, CreateContactActivity.class);

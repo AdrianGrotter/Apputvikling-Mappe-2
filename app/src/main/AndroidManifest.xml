@@ -18,6 +18,8 @@
         <activity android:name=".CreateAppointmentActivity"/>
         <activity android:name=".AvtaleoversiktActivity"/>
         <activity android:name=".EditContactActivity"/>
+        <service android:name=".MinService"/>
+        <service android:name=".SettPeriodiskService"></service>
         <activity
             android:name=".MainActivity"
             android:exported="true">
