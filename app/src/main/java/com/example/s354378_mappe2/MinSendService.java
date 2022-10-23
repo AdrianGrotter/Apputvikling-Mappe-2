@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-public class MinService extends Service {
+public class MinSendService extends Service {
 
     @Nullable
     @Override

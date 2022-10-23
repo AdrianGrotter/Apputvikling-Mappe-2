@@ -1,10 +1,7 @@
 package com.example.s354378_mappe2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -15,13 +12,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
@@ -129,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void stoppPeriodisk(View v){
-        Intent i = new Intent(this, MinService.class);
+        Intent i = new Intent(this, MinSendService.class);
         PendingIntent pintent = PendingIntent.getService(this, 0, i, 0);
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         if(alarm != null){

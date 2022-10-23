@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Calendar;
 
-public class SettPeriodiskService extends Service {
+public class MinPeriodisk extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent){
@@ -20,7 +20,7 @@ public class SettPeriodiskService extends Service {
    @Override
    public int onStartCommand(Intent intent, int flags, int startId){
         java.util.Calendar cal = Calendar.getInstance();
-        Intent i = new Intent(this, MinService.class);
+        Intent i = new Intent(this, MinSendService.class);
        PendingIntent pintent = PendingIntent.getService(this, 0, i, 0);
        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 10*1000, pintent);
