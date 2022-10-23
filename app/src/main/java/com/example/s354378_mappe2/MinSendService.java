@@ -35,16 +35,13 @@ public class MinSendService extends Service {
         StringBuilder test = new StringBuilder();
         int myCounter = 0;
         for (Appointment a : myAppointments){
-            if (a.getDate().equals(getTodaysDate())){
+            if (a.getDate().equals(TimeData.getTodaysDate())){
                 myCounter++;
             }
         }
+        test.append("You have ");
         test.append(myCounter);
-        /*int h = Integer.parseInt(myAppointments.get(0).getTime().substring(0,2));
-        int m = Integer.parseInt(myAppointments.get(0).getTime().substring(3,5));
-        System.out.println(h+""+m);*/
-
-        Date date = new Date();
+        test.append(" appointments today");
 
         Toast.makeText(getApplicationContext(), test.toString(), Toast.LENGTH_SHORT).show();
         NotificationManager  notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -62,52 +59,6 @@ public class MinSendService extends Service {
 
 
         return super.onStartCommand(intent, flags, startId);
-    }
-
-    private String getTodaysDate()
-    {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
-    }
-
-    private String makeDateString(int day, int month, int year)
-    {
-        return  day + " " + getMonthFormat(month) + " " + year;
-    }
-
-    private String getMonthFormat(int month)
-    {
-        if(month == 1)
-            return "JAN";
-        if(month == 2)
-            return "FEB";
-        if(month == 3)
-            return "MAR";
-        if(month == 4)
-            return "APR";
-        if(month == 5)
-            return "MAY";
-        if(month == 6)
-            return "JUN";
-        if(month == 7)
-            return "JUL";
-        if(month == 8)
-            return "AUG";
-        if(month == 9)
-            return "SEP";
-        if(month == 10)
-            return "OCT";
-        if(month == 11)
-            return "NOV";
-        if(month == 12)
-            return "DEC";
-
-        //default should never happen
-        return "JAN";
     }
 }
 

@@ -48,7 +48,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
         Button btnMain = (Button) findViewById(R.id.btnMain);
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
         dateButton = (Button) findViewById(R.id.datePickerButton);
-        dateButton.setText(getTodaysDate());
+        dateButton.setText(TimeData.getTodaysDate());
 
         name = (EditText) findViewById(R.id.inputName);
         time = (EditText) findViewById(R.id.inputTime);
@@ -67,6 +67,8 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
         adapter.setDropDownViewResource(R.layout.spinner_item);
         participants.setAdapter(adapter);
         participants.setOnItemSelectedListener(this);
+
+
 
 
         btnMain.setOnClickListener(new View.OnClickListener() {
@@ -98,31 +100,6 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
         });
 
     }
-
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
-        selectedIndex = pos;
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
-    private void activityMain() {
-        Intent myIntent = new Intent(this, MainActivity.class);
-        startActivity(myIntent);
-    }
-
-    private String getTodaysDate()
-    {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
-    }
-
     private void initDatePicker()
     {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
@@ -131,7 +108,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
             public void onDateSet(DatePicker datePicker, int year, int month, int day)
             {
                 month = month + 1;
-                String date = makeDateString(day, month, year);
+                String date = TimeData.makeDateString(day, month, year);
                 dateButton.setText(date);
             }
         };
@@ -148,46 +125,26 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
 
     }
 
-    private String makeDateString(int day, int month, int year)
-    {
-        return  day + " " + getMonthFormat(month) + " " + year;
-    }
-
-    private String getMonthFormat(int month)
-    {
-        if(month == 1)
-            return "JAN";
-        if(month == 2)
-            return "FEB";
-        if(month == 3)
-            return "MAR";
-        if(month == 4)
-            return "APR";
-        if(month == 5)
-            return "MAY";
-        if(month == 6)
-            return "JUN";
-        if(month == 7)
-            return "JUL";
-        if(month == 8)
-            return "AUG";
-        if(month == 9)
-            return "SEP";
-        if(month == 10)
-            return "OCT";
-        if(month == 11)
-            return "NOV";
-        if(month == 12)
-            return "DEC";
-
-        //default should never happen
-        return "JAN";
-    }
-
     public void openDatePicker(View view)
     {
         datePickerDialog.show();
     }
+
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
+        selectedIndex = pos;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    private void activityMain() {
+        Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
+    }
+
+
 
 
 }
