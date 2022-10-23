@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 
-import androidx.annotation.CallSuper;
 import androidx.annotation.Nullable;
 
 import java.util.Calendar;
