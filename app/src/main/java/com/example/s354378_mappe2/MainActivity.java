@@ -1,16 +1,25 @@
 package com.example.s354378_mappe2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+    DBHandler dbHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +35,12 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("standardMessage", "No message added");
-        editor.commit();
+        editor.putString("smsTime", "0500");
+        editor.apply();
+
+        dbHelper = new DBHandler(this);
+        db = dbHelper.getWritableDatabase();
+
 
         btnRegistrer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +68,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /*private void sendSMSMessages(){
+        List<Appointment> myAppointments = dbHelper.retrieveAllAppointments(db);
+        List<Contact> myContacts = dbHelper.retrieveAllContacts(db);
+
+        for (Appointment appointment : myAppointments){
+            String phone;
+            String message = appointment.getMessage();
+            Contact c = new Contact();
+            for(Contact contact : myContacts){
+                if (contact.get_ID() == Long.parseLong(appointment.getParticipants())){
+                    phone = contact.getPhone();
+                    break;
+                }
+            }
+        }
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED){
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.SEND_SMS)) {
+                    ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                            MY_PERMISSIONS_REQUEST_SEND_SMS);
+                }
+        }
+
+    }*/
 
     private void activityAddContacts() {
         Intent myIntent = new Intent(this, CreateContactActivity.class);
