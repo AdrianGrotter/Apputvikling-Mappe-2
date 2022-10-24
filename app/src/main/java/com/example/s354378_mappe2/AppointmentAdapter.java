@@ -73,7 +73,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         public TextView location;
         public TextView participant;
         public TextView message;
-
         public Button delete;
 
         public ViewHolder(View itemView){
