@@ -54,7 +54,6 @@ public class MinSendService extends Service {
         test.append(myCounter);
         test.append(" appointments today");
 
-        //Toast.makeText(getApplicationContext(), test.toString(), Toast.LENGTH_SHORT).show();
         NotificationManager  notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Intent i = new Intent(this, AvtaleoversiktActivity.class);
         PendingIntent pintent = PendingIntent.getActivity(this, 0, i, 0);

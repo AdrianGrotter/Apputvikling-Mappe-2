@@ -22,12 +22,12 @@
     <string name="labelLast">Etternavn:</string>
     <string name="labelPhone">Telefonnummer:</string>
 
-    <string name="labelName">Navn:</string>
-    <string name="labelDate">Dato:</string>
-    <string name="labelTime">Tid:</string>
-    <string name="labelLocation">Sted:</string>
-    <string name="labelParticipant">Venn:</string>
-    <string name="labelMessage">Melding:</string>
+    <string name="labelName">Navn</string>
+    <string name="labelDate">Dato</string>
+    <string name="labelTime">Tid</string>
+    <string name="labelLocation">Sted</string>
+    <string name="labelParticipant">Venn</string>
+    <string name="labelMessage">Melding</string>
 
     <string name="channel_name">Min Kanal15</string>
     <string name="channel_description">Min Beskrivelse15</string>

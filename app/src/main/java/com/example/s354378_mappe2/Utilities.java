@@ -21,38 +21,50 @@ public class Utilities {
 
     public static String makeDateString(int day, int month, int year)
     {
-        return  day + " " + getMonthFormat(month) + " " + year;
-    }
+        String formattedMonth = "";
+        switch (month){
+            case 1:
+                formattedMonth = "JAN";
+                break;
+            case 2:
+                formattedMonth = "FEB";
+                break;
+            case 3:
+                formattedMonth = "MAR";
+                break;
+            case 4:
+                formattedMonth = "APR";
+                break;
+            case 5:
+                formattedMonth = "MAY";
+                break;
+            case 6:
+                formattedMonth = "JUN";
+                break;
+            case 7:
+                formattedMonth = "JUL";
+                break;
+            case 8:
+                formattedMonth = "AUG";
+                break;
+            case 9:
+                formattedMonth = "SEP";
+                break;
+            case 10:
+                formattedMonth = "OCT";
+                break;
+            case 11:
+                formattedMonth = "NOV";
+                break;
+            case 12:
+                formattedMonth = "DEC";
+                break;
+            default:
+                formattedMonth = "JAN";
+        }
 
-    public static String getMonthFormat(int month)
-    {
-        if(month == 1)
-            return "JAN";
-        if(month == 2)
-            return "FEB";
-        if(month == 3)
-            return "MAR";
-        if(month == 4)
-            return "APR";
-        if(month == 5)
-            return "MAY";
-        if(month == 6)
-            return "JUN";
-        if(month == 7)
-            return "JUL";
-        if(month == 8)
-            return "AUG";
-        if(month == 9)
-            return "SEP";
-        if(month == 10)
-            return "OCT";
-        if(month == 11)
-            return "NOV";
-        if(month == 12)
-            return "DEC";
+        return day + " " + formattedMonth + " " + year;
 
-        //default should never happen
-        return "JAN";
     }
 
     public static List<Appointment> buildAppointmentList(Context context){

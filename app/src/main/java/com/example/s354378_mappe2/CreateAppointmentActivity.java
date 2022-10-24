@@ -25,15 +25,16 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
     EditText name;
     EditText time;
     EditText location;
-    Spinner participants;
     EditText message;
+    Spinner participants;
+    Button dateButton;
 
 
     DBHandler dbHelper;
     SQLiteDatabase db;
     private DatePickerDialog datePickerDialog;
-    Button dateButton;
 
+    //selectedIndex lagrer hvilken kontakt som ble valgt
     int selectedIndex;
 
     @Override
@@ -79,6 +80,8 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Bygger Appointment-objekt med data fra input-boksene
                 Appointment newApmnt = new Appointment();
                 newApmnt.name = name.getText().toString();
                 newApmnt.date = dateButton.getText().toString();
@@ -87,6 +90,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                 newApmnt.participants = Long.toString(contactList.get(selectedIndex).get_ID());
                 newApmnt.message = message.getText().toString();
 
+                //Setter egen melding fra SharedPreferences om message er tom
                 if(message.getText().toString().equals("")){
                     SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
                     newApmnt.message = sp.getString("standardMessage", "");
@@ -98,6 +102,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
         });
 
     }
+
     private void initDatePicker()
     {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
@@ -105,21 +110,18 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day)
             {
-                month = month + 1;
-                String date = Utilities.makeDateString(day, month, year);
-                dateButton.setText(date);
+                dateButton.setText(Utilities.makeDateString(day, month + 1, year));
             }
         };
 
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
 
         int style = AlertDialog.BUTTON_POSITIVE;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 
     }
 
