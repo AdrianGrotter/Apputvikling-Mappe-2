@@ -10,12 +10,14 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Telephony;
 import android.telephony.SmsManager;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     DBHandler dbHelper;
     SQLiteDatabase db;
     String CHANNEL_ID = "MinKanal";
+
+    public static String PROVIDER = "com.example.contentprovidercontact" ;
+    public static final Uri CONTENT_URI = Uri.parse("content://"+ PROVIDER + "/contact");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
         startService(new View(this));
+
+        for (Contact c : dbHelper.retrieveAllContacts(db)) System.out.println(c.get_ID());
 
 
         btnRegistrer.setOnClickListener(new View.OnClickListener() {
