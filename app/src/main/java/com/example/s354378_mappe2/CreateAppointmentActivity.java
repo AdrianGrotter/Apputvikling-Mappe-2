@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -101,6 +102,8 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                 time.setText("");
                 location.setText("");
                 message.setText("");
+
+                Toast.makeText(getApplicationContext(), "Avtalen ble lagret!", Toast.LENGTH_SHORT).show();
 
                 System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
                 dbHelper.addAppointment(db, newApmnt);

@@ -21,8 +21,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="326dp"
-        android:layout_height="137dp"
+        android:layout_width="212dp"
+        android:layout_height="140dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,82 +30,46 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.47000003">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputFirstName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/labelFirst"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white" />
 
-            <TextView
-                android:id="@+id/labelFirst"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/labelFirst"
-                android:textColor="#FFFFFF" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/inputFirstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputLastName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/labelLast"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white" />
 
-            <TextView
-                android:id="@+id/labelLast"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/labelLast"
-                android:textColor="#FFFFFF" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/labelPhone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/inputLastName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/labelPhone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/labelPhone"
-                android:textColor="#FFFFFF" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/inputPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="phone"
-                android:text=""
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

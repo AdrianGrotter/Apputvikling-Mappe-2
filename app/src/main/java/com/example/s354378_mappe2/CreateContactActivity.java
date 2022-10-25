@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,8 @@ public class CreateContactActivity extends AppCompatActivity {
                 firstName.setText("");
                 lastName.setText("");
                 phone.setText("");
+
+                Toast.makeText(getApplicationContext(), "Kontakten ble lagret!", Toast.LENGTH_SHORT).show();
 
                 dbHelper.addContact(db, newContact);
             }

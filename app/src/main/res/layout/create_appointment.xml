@@ -45,7 +45,33 @@
             android:text=""
             android:textColor="#FFFFFF" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:hint="@string/labelLocation"
+            android:textColorHint="@color/white"
+            android:text=""
+            android:textColor="#FFFFFF" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:hint="@string/labelMessage"
+            android:textColorHint="@color/white"
+            android:text=""
+            android:textColor="#FFFFFF" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/datePickerButton"
             style="?android:spinnerStyle"
             android:layout_width="150dp"
@@ -54,12 +80,11 @@
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
             android:onClick="openDatePicker"
-            android:text="JAN 01 2020"
+            android:text="@string/datePicker"
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
-
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/inputTime"
@@ -74,21 +99,6 @@
             android:text=""
             android:textColor="#FFFFFF" />
 
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/inputLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:hint="@string/labelLocation"
-            android:textColorHint="@color/white"
-            android:text=""
-            android:textColor="#FFFFFF" />
-
-
         <Spinner
             android:id="@+id/inputParticipants"
             android:layout_width="214dp"
@@ -98,19 +108,6 @@
             android:popupBackground="#121212"
             android:gravity="center_horizontal"
             android:spinnerMode="dropdown" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/inputMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:hint="@string/labelMessage"
-            android:textColorHint="@color/white"
-            android:text=""
-            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

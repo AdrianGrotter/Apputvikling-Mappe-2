@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,6 +61,9 @@ public class EditContactActivity extends AppCompatActivity {
                 newContact.last = lastName.getText().toString();
                 newContact.phone = phone.getText().toString();
                 dbHelper.editContact(db, newContact);
+
+                Toast.makeText(getApplicationContext(), "Kontakten ble oppdatert!", Toast.LENGTH_SHORT).show();
+                back();
             }
         });
         btnReturn.setOnClickListener(new View.OnClickListener() {

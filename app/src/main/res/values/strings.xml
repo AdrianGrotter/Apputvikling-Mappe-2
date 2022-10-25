@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">s354378-mappe2</string>
 
-    <string name="title">Legg til venn</string>
+    <string name="title">Legg til kontakt</string>
     <string name="titleAppointment">Opprett avtale</string>
     <string name="titleHome">Velkommen</string>
     <string name="titleDisplayContacts">Dine kontakter</string>
@@ -22,8 +22,8 @@
     <string name="labelLast">Etternavn</string>
     <string name="labelPhone">Telefonnummer</string>
 
-    <string name="labelName">Navn</string>
-    <string name="labelDate">Dato</string>
+    <string name="labelName">Tittel</string>
+    <string name="datePicker">JAN 01 2020</string>
     <string name="labelTime">Tid</string>
     <string name="labelLocation">Sted</string>
     <string name="labelParticipant">Venn</string>
