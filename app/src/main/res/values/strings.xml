@@ -18,9 +18,9 @@
     <string name="inputFirst">Fornavn</string>
     <string name="inputLast">Etternavn</string>
 
-    <string name="labelFirst">Fornavn:</string>
-    <string name="labelLast">Etternavn:</string>
-    <string name="labelPhone">Telefonnummer:</string>
+    <string name="labelFirst">Fornavn</string>
+    <string name="labelLast">Etternavn</string>
+    <string name="labelPhone">Telefonnummer</string>
 
     <string name="labelName">Navn</string>
     <string name="labelDate">Dato</string>
