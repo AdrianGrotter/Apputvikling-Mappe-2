@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EditContactActivity extends AppCompatActivity {
     EditText firstName;
@@ -21,7 +22,7 @@ public class EditContactActivity extends AppCompatActivity {
     SQLiteDatabase db;
 
     protected void onCreate(Bundle savedInstanceState){
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_contact);
 

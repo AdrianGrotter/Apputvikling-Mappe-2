@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Objects;
 
 public class KontaktoversiktActivity extends AppCompatActivity {
 
     DBHandler dbHelper;
     SQLiteDatabase db;
     protected void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kontaktoversikt);
 

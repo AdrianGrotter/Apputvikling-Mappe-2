@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CreateAppointmentActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -39,7 +40,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_appointment);
         initDatePicker();
@@ -95,6 +96,11 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                     SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
                     newApmnt.message = sp.getString("standardMessage", "");
                 }
+                name.setText("");
+                dateButton.setText(Utilities.getTodaysDate());
+                time.setText("");
+                location.setText("");
+                message.setText("");
 
                 System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
                 dbHelper.addAppointment(db, newApmnt);

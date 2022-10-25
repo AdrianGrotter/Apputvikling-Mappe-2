@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CreateContactActivity extends AppCompatActivity {
     EditText firstName;
@@ -24,7 +25,7 @@ public class CreateContactActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_contact);
 
@@ -55,6 +56,10 @@ public class CreateContactActivity extends AppCompatActivity {
                 newContact.phone = phone.getText().toString();
 
                 System.out.println(newContact.first + " " + newContact.last + " " + newContact+phone);
+
+                firstName.setText("");
+                lastName.setText("");
+                phone.setText("");
 
                 dbHelper.addContact(db, newContact);
             }
