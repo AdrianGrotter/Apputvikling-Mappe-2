@@ -1,13 +1,9 @@
 package com.example.s354378_mappe2;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class AvtaleoversiktActivity extends AppCompatActivity {
-    TextView appointmentOutput;
 
     DBHandler dbHelper;
     SQLiteDatabase db;
@@ -26,24 +21,19 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.avtaleoversikt);
 
-        Button btnMain = (Button) findViewById(R.id.btnMain);
+        Button btnMain = findViewById(R.id.btnMain);
 
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
 
-        RecyclerView rvAppointments = (RecyclerView) findViewById(R.id.rvAppointments);
+        RecyclerView rvAppointments = findViewById(R.id.rvAppointments);
         List<Appointment> appointmentList = Utilities.buildAppointmentList(getApplicationContext());
 
         AppointmentAdapter adapter = new AppointmentAdapter(appointmentList);
         rvAppointments.setAdapter(adapter);
         rvAppointments.setLayoutManager(new LinearLayoutManager(this));
 
-        btnMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activityMain();
-            }
-        });
+        btnMain.setOnClickListener(view -> activityMain());
     }
     private void activityMain() {
         Intent myIntent = new Intent(this, MainActivity.class);

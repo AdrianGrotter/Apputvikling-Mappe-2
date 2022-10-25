@@ -1,29 +1,25 @@
 package com.example.s354378_mappe2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Telephony;
-import android.telephony.SmsManager;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -42,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
 
-        Button btnRegistrer = (Button) findViewById(R.id.btnCreateContact);
-        Button btnShowContacts = (Button) findViewById(R.id.btnShowContactsPage);
-        Button btnShowAppointments = (Button) findViewById(R.id.btnShowAppointmentsPage);
-        Button btnCreateAppointment = (Button) findViewById(R.id.btnCreateAppointment);
+        Button btnRegistrer = findViewById(R.id.btnCreateContact);
+        Button btnShowContacts = findViewById(R.id.btnShowContactsPage);
+        Button btnShowAppointments = findViewById(R.id.btnShowAppointmentsPage);
+        Button btnCreateAppointment = findViewById(R.id.btnCreateAppointment);
 
         SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -65,31 +61,11 @@ public class MainActivity extends AppCompatActivity {
         for (Contact c : dbHelper.retrieveAllContacts(db)) System.out.println(c.get_ID());
 
 
-        btnRegistrer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activityAddContacts();
-            }
-        });
-        btnShowContacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activityKontaktoversikt();
-            }
-        });
-        btnCreateAppointment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activityAddAppointment();
-            }
-        });
+        btnRegistrer.setOnClickListener(view -> activityAddContacts());
+        btnShowContacts.setOnClickListener(view -> activityKontaktoversikt());
+        btnCreateAppointment.setOnClickListener(view -> activityAddAppointment());
 
-        btnShowAppointments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activityAvtaleoversikt();
-            }
-        });
+        btnShowAppointments.setOnClickListener(view -> activityAvtaleoversikt());
     }
 
     public void startService (View v){

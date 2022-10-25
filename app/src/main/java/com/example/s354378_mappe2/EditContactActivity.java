@@ -3,14 +3,12 @@ package com.example.s354378_mappe2;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,12 +28,12 @@ public class EditContactActivity extends AppCompatActivity {
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
 
-        firstName = (EditText) findViewById(R.id.inputFirstName);
-        lastName = (EditText) findViewById(R.id.inputLastName);
-        phone = (EditText) findViewById(R.id.inputPhone);
+        firstName = findViewById(R.id.inputFirstName);
+        lastName = findViewById(R.id.inputLastName);
+        phone = findViewById(R.id.inputPhone);
 
-        Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
-        Button btnReturn = (Button) findViewById(R.id.btnReturn);
+        Button btnSubmit = findViewById(R.id.btnSubmit);
+        Button btnReturn = findViewById(R.id.btnReturn);
 
         List<Contact> myContacts = dbHelper.retrieveAllContacts(db);
         String id = getIntent().getExtras().getString("id");
@@ -52,26 +50,18 @@ public class EditContactActivity extends AppCompatActivity {
 
 
         Contact finalMyContact = myContact;
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Contact newContact = new Contact();
-                newContact.set_ID(finalMyContact.get_ID());
-                newContact.first = firstName.getText().toString();
-                newContact.last = lastName.getText().toString();
-                newContact.phone = phone.getText().toString();
-                dbHelper.editContact(db, newContact);
+        btnSubmit.setOnClickListener(view -> {
+            Contact newContact = new Contact();
+            newContact.set_ID(finalMyContact.get_ID());
+            newContact.first = firstName.getText().toString();
+            newContact.last = lastName.getText().toString();
+            newContact.phone = phone.getText().toString();
+            dbHelper.editContact(db, newContact);
 
-                Toast.makeText(getApplicationContext(), "Kontakten ble oppdatert!", Toast.LENGTH_SHORT).show();
-                back();
-            }
+            Toast.makeText(getApplicationContext(), "Kontakten ble oppdatert!", Toast.LENGTH_SHORT).show();
+            back();
         });
-        btnReturn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                back();
-            }
-        });
+        btnReturn.setOnClickListener(view -> back());
     }
     private void back() {
         Intent myIntent = new Intent(this, KontaktoversiktActivity.class);
