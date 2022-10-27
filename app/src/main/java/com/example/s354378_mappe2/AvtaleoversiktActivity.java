@@ -3,6 +3,7 @@ package com.example.s354378_mappe2;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,17 +15,12 @@ import java.util.Objects;
 
 public class AvtaleoversiktActivity extends AppCompatActivity {
 
-    DBHandler dbHelper;
-    SQLiteDatabase db;
     protected void onCreate(Bundle savedInstanceState) {
         Objects.requireNonNull(getSupportActionBar()).hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.avtaleoversikt);
 
         Button btnMain = findViewById(R.id.btnMain);
-
-        dbHelper = new DBHandler(this);
-        db = dbHelper.getWritableDatabase();
 
         RecyclerView rvAppointments = findViewById(R.id.rvAppointments);
         List<Appointment> appointmentList = Utilities.buildAppointmentList(getApplicationContext());
@@ -37,6 +33,10 @@ public class AvtaleoversiktActivity extends AppCompatActivity {
     }
     private void activityMain() {
         Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
+    }
+    public void tilCreateAppointment(View view) {
+        Intent myIntent = new Intent(this, CreateAppointmentActivity.class);
         startActivity(myIntent);
     }
 }

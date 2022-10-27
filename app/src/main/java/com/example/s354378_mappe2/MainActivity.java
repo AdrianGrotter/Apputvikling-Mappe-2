@@ -24,8 +24,6 @@ import android.widget.Button;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    DBHandler dbHelper;
-    SQLiteDatabase db;
     String CHANNEL_ID = "MinKanal";
 
     public static String PROVIDER = "com.example.contentprovidercontact" ;
@@ -53,13 +51,7 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter("com.example.service.MITTSIGNAL");
         filter.addAction("com.example.service.MITTSIGNAL");
         this.registerReceiver(myBroadcastReceiver, filter);
-
-        dbHelper = new DBHandler(this);
-        db = dbHelper.getWritableDatabase();
         startService(new View(this));
-
-        for (Contact c : dbHelper.retrieveAllContacts(db)) System.out.println(c.get_ID());
-
 
         btnRegistrer.setOnClickListener(view -> activityAddContacts());
         btnShowContacts.setOnClickListener(view -> activityKontaktoversikt());

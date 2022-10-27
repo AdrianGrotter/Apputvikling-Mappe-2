@@ -3,6 +3,7 @@ package com.example.s354378_mappe2;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,11 @@ public class KontaktoversiktActivity extends AppCompatActivity {
 
     private void mainActivity() {
         Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void tilCreateContact(View view) {
+        Intent myIntent = new Intent(this, CreateContactActivity.class);
         startActivity(myIntent);
     }
 }

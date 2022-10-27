@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
-    tools:context=".KontaktoversiktActivity">
+    tools:context=".AvtaleoversiktActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -25,14 +25,29 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAppointments"
-            android:layout_width="388dp"
-            android:layout_height="561dp"
+            android:layout_width="381dp"
+            android:layout_height="517dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.841" />
+            app:layout_constraintVertical_bias="0.427" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreate"
+            android:layout_width="135dp"
+            android:layout_height="51dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/button_border"
+            android:onClick="tilCreateAppointment"
+            android:text="@string/btnCreateAppointment"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.992" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
