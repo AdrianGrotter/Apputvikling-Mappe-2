@@ -1,11 +1,14 @@
 package com.example.s354378_mappe2;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.telephony.SmsManager;
@@ -68,6 +71,11 @@ public class MinSendService extends Service {
     }
 
     public void sendSMSMessage(String phoneNo, String message){
+        SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
+        if(!sp.getBoolean("sjekkSMS", false)){
+            Toast.makeText(this, "SMS-funksjoner er deaktivert", Toast.LENGTH_SHORT).show();
+            return;
+        }
         int MY_PERMISSIONS_REQUEST_SEND_SMS = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS);
         int MY_PHONE_STATE_PERMISSION = ActivityCompat.checkSelfPermission(this,

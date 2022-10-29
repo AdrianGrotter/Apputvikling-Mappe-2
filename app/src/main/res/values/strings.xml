@@ -14,6 +14,8 @@
     <string name="btnCreateContact">Legg til kontakt</string>
     <string name="btnCreateAppointment">Lag avtale</string>
     <string name="btnOverview">Se oversikt</string>
+    <string name="btnToggleSMS">Skru SMS av</string>
+    <string name="btnToggleService">Skru av notifikasjoner</string>
 
     <string name="inputFirst">Fornavn</string>
     <string name="inputLast">Etternavn</string>
@@ -21,6 +23,8 @@
     <string name="labelFirst">Fornavn</string>
     <string name="labelLast">Etternavn</string>
     <string name="labelPhone">Telefonnummer</string>
+    <string name="appointmentLabel">Avtaler</string>
+    <string name="contactLabel">Kontakter</string>
 
     <string name="labelName">Tittel</string>
     <string name="datePicker">JAN 01 2020</string>
