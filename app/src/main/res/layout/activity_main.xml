@@ -108,37 +108,35 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/toggleSMS"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="27dp"
         android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="2.5dp"
-        android:background="@drawable/button_border"
-        android:text="@string/btnToggleSMS"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/messages"
         android:onClick="toggleSMS"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.817"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/toggleService"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
+        android:layout_width="37dp"
+        android:layout_height="26dp"
         android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="2.5dp"
-        android:background="@drawable/button_border"
-        android:text="@string/btnToggleService"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/notifications"
         android:onClick="stoppPeriodisk"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855" />
+        app:layout_constraintVertical_bias="0.022" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
