@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,6 +18,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.s354378_mappe2.models.Appointment;
+import com.example.s354378_mappe2.models.Contact;
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
+import com.example.s354378_mappe2.Utilities;
 
 import java.util.List;
 import java.util.Objects;
@@ -85,17 +91,17 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
 
                 //Bygger Appointment-objekt med data fra input-boksene
                 Appointment newApmnt = new Appointment();
-                newApmnt.name = name.getText().toString();
-                newApmnt.date = dateButton.getText().toString();
-                newApmnt.time = time.getText().toString();
-                newApmnt.location = location.getText().toString();
-                newApmnt.participants = Long.toString(contactList.get(selectedIndex).get_ID());
-                newApmnt.message = message.getText().toString();
+                newApmnt.setName(name.getText().toString());
+                newApmnt.setDate(dateButton.getText().toString());
+                newApmnt.setTime(time.getText().toString());
+                newApmnt.setLocation(location.getText().toString());
+                newApmnt.setParticipants(Long.toString(contactList.get(selectedIndex).get_ID()));
+                newApmnt.setMessage(message.getText().toString());
 
                 //Setter egen melding fra SharedPreferences om message er tom
                 if(message.getText().toString().equals("")){
                     SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
-                    newApmnt.message = sp.getString("standardMessage", "");
+                    newApmnt.setMessage(sp.getString("standardMessage", ""));
                 }
                 name.setText("");
                 dateButton.setText(Utilities.getTodaysDate());
@@ -104,8 +110,6 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                 message.setText("");
 
                 Toast.makeText(getApplicationContext(), "Avtalen ble lagret!", Toast.LENGTH_SHORT).show();
-
-                System.out.println(newApmnt.name + " " + newApmnt.date + " " + newApmnt.time + " " + newApmnt.location + " " + newApmnt.participants + " " + newApmnt.message);
                 dbHelper.addAppointment(db, newApmnt);
             }
         });

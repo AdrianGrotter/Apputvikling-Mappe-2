@@ -1,19 +1,19 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.s354378_mappe2.models.Contact;
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
+
 import java.util.Objects;
 
 public class CreateContactActivity extends AppCompatActivity {
@@ -52,11 +52,9 @@ public class CreateContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Contact newContact = new Contact();
-                newContact.first = firstName.getText().toString();
-                newContact.last = lastName.getText().toString();
-                newContact.phone = phone.getText().toString();
-
-                System.out.println(newContact.first + " " + newContact.last + " " + newContact+phone);
+                newContact.setFirst(firstName.getText().toString());
+                newContact.setLast(lastName.getText().toString());
+                newContact.setPhone(phone.getText().toString());
 
                 firstName.setText("");
                 lastName.setText("");

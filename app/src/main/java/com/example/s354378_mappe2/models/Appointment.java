@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.models;
 
 public class Appointment {
     long _ID;

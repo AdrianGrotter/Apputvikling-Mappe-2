@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.s354378_mappe2.service.MinBroadcastReceiver;
+import com.example.s354378_mappe2.service.MinSendService;
+import com.example.s354378_mappe2.R;
 
 import java.util.Objects;
 
@@ -68,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "SMS ble deaktivert!", Toast.LENGTH_SHORT).show();
             btnToggleSMS.setBackgroundResource(R.drawable.messages_off);
         }else{
+            if(!sp.getBoolean("sjekkNotifikasjon", false)){
+                Toast.makeText(this, "Du må aktivere notifikasjoner først!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             editor.putBoolean("sjekkSMS", true);
             Toast.makeText(MainActivity.this, "SMS ble aktivert!", Toast.LENGTH_SHORT).show();
             btnToggleSMS.setBackgroundResource(R.drawable.messages);

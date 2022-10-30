@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.activities;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +9,11 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.s354378_mappe2.models.Contact;
+import com.example.s354378_mappe2.adapters.ContactsAdapter;
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
 
 import java.util.List;
 import java.util.Objects;

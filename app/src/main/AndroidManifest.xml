@@ -27,15 +27,15 @@
             android:readPermission="com.example.contentprovidercontact.permission"
             android:writePermission="com.example.contentprovidercontact.permission">
         </provider>
-        <activity android:name=".CreateContactActivity"/>
-        <activity android:name=".KontaktoversiktActivity"/>
-        <activity android:name=".CreateAppointmentActivity"/>
-        <activity android:name=".AvtaleoversiktActivity"/>
-        <activity android:name=".EditContactActivity"/>
-        <service android:name=".MinSendService"/>
-        <service android:name=".MinPeriodisk"/>
+        <activity android:name=".activities.CreateContactActivity"/>
+        <activity android:name=".activities.KontaktoversiktActivity"/>
+        <activity android:name=".activities.CreateAppointmentActivity"/>
+        <activity android:name=".activities.AvtaleoversiktActivity"/>
+        <activity android:name=".activities.EditContactActivity"/>
+        <service android:name=".service.MinSendService"/>
+        <service android:name=".service.MinPeriodisk"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

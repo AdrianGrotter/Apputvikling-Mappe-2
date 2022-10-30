@@ -4,6 +4,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 
 
+import com.example.s354378_mappe2.models.Appointment;
+import com.example.s354378_mappe2.models.Contact;
+
 import java.util.List;
 
 public class Utilities {
@@ -80,7 +83,7 @@ public class Utilities {
         for(Appointment a : appointmentList){
             for(Contact c : contactList){
                 if(Long.parseLong(a.getParticipants()) == c.get_ID()){
-                    a.setParticipants(c.first);
+                    a.setParticipants(c.getFirst());
                     break;
                 }
             }

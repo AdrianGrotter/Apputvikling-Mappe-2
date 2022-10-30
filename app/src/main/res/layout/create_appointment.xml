@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
-    tools:context=".CreateAppointmentActivity">
+    tools:context=".activities.CreateAppointmentActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -73,7 +73,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/datePickerButton"
-            style="?android:spinnerStyle"
+            style="?android:datePickerMode"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.adapters;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
+import com.example.s354378_mappe2.Utilities;
+import com.example.s354378_mappe2.models.Appointment;
 
 import java.util.List;
 

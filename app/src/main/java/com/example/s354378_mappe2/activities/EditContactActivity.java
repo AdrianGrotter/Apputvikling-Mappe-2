@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.activities;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +8,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.s354378_mappe2.models.Contact;
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
 
 import java.util.List;
 import java.util.Objects;
@@ -53,9 +57,9 @@ public class EditContactActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(view -> {
             Contact newContact = new Contact();
             newContact.set_ID(finalMyContact.get_ID());
-            newContact.first = firstName.getText().toString();
-            newContact.last = lastName.getText().toString();
-            newContact.phone = phone.getText().toString();
+            newContact.setFirst(firstName.getText().toString());
+            newContact.setLast(lastName.getText().toString());
+            newContact.setPhone(phone.getText().toString());
             dbHelper.editContact(db, newContact);
 
             Toast.makeText(getApplicationContext(), "Kontakten ble oppdatert!", Toast.LENGTH_SHORT).show();

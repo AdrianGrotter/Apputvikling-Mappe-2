@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
+import com.example.s354378_mappe2.activities.EditContactActivity;
+import com.example.s354378_mappe2.models.Contact;
 
 import java.util.List;
 

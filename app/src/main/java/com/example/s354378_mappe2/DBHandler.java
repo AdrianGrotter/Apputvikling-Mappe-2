@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.s354378_mappe2.models.Appointment;
+import com.example.s354378_mappe2.models.Contact;
+
 import java.util.ArrayList;
 import java.util.List;
 

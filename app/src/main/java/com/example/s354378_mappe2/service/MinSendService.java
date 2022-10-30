@@ -1,4 +1,4 @@
-package com.example.s354378_mappe2;
+package com.example.s354378_mappe2.service;
 
 import android.Manifest;
 import android.app.Activity;
@@ -6,7 +6,6 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +16,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+
+import com.example.s354378_mappe2.DBHandler;
+import com.example.s354378_mappe2.R;
+import com.example.s354378_mappe2.Utilities;
+import com.example.s354378_mappe2.activities.AvtaleoversiktActivity;
+import com.example.s354378_mappe2.models.Appointment;
+import com.example.s354378_mappe2.models.Contact;
 
 import java.util.List;
 
