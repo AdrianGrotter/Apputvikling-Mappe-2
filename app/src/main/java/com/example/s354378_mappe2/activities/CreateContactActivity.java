@@ -51,6 +51,12 @@ public class CreateContactActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(firstName.getText().toString().equals("") ||
+                        phone.getText().toString().equals("")){
+                    Toast.makeText(CreateContactActivity.this, "Ett eller flere felt er ikke fyllt ut", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Contact newContact = new Contact();
                 newContact.setFirst(firstName.getText().toString());
                 newContact.setLast(lastName.getText().toString());

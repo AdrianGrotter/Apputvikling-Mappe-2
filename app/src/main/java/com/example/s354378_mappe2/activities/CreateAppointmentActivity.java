@@ -92,13 +92,24 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
             @Override
             public void onClick(View view) {
 
+                //Stopper registreringen om Titel, sted eller tid ikke er fylt ut.
+                if(name.getText().toString().equals("") ||
+                        time.getText().toString().equals("") ||
+                        location.getText().toString().equals("")){
+                    Toast.makeText(CreateAppointmentActivity.this, "Ett eller flere felt er ikke fyllt ut", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //Bygger Appointment-objekt med data fra input-boksene
                 Appointment newApmnt = new Appointment();
                 newApmnt.setName(name.getText().toString());
                 newApmnt.setDate(dateButton.getText().toString());
                 newApmnt.setTime(time.getText().toString());
                 newApmnt.setLocation(location.getText().toString());
-                newApmnt.setParticipants(Long.toString(contactList.get(selectedIndex).get_ID()));
+
+                if(contactList.isEmpty()) newApmnt.setParticipants("0");
+                else newApmnt.setParticipants(Long.toString(contactList.get(selectedIndex).get_ID()));
+
                 newApmnt.setMessage(message.getText().toString());
 
                 //Setter egen melding fra SharedPreferences om message er tom
