@@ -108,8 +108,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/toggleSMS"
-        android:layout_width="36dp"
-        android:layout_height="27dp"
+        android:layout_width="27dp"
+        android:layout_height="26dp"
         android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="2.5dp"
         android:background="@drawable/messages"
