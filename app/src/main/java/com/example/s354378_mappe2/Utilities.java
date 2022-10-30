@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Utilities {
 
+    //Klasse med metoder som brukes flere steder,
+    //Samlet her for å ikke måtte skrive metodene mange ganger
 
     public static String getTodaysDate()
     {

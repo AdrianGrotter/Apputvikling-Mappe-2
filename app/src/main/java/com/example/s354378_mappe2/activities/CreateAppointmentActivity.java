@@ -66,12 +66,15 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
         dbHelper = new DBHandler(this);
         db = dbHelper.getWritableDatabase();
 
+        //Henter alle kontakter og legger fornavn i listen ddlItems
         List<Contact> contactList = dbHelper.retrieveAllContacts(db);
-
         List<String> ddlItems = contactList.stream().map(Contact::getFirst).collect(Collectors.toList());
 
+        //Oppretter en spinner som fylles med alle navn fra ddlitems.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateAppointmentActivity.this, R.layout.spinner_item, ddlItems);
         adapter.setDropDownViewResource(R.layout.spinner_item);
+
+        //Setter det på spinneren med id inputParticipants
         participants.setAdapter(adapter);
         participants.setOnItemSelectedListener(this);
 
@@ -103,6 +106,8 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
                     SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
                     newApmnt.setMessage(sp.getString("standardMessage", ""));
                 }
+
+                //Resetter input-felt
                 name.setText("");
                 dateButton.setText(Utilities.getTodaysDate());
                 time.setText("");
@@ -116,6 +121,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Adap
 
     }
 
+    //Metodene under brukes i forbindelse med å velge dato
     private void initDatePicker()
     {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()

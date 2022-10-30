@@ -1,10 +1,12 @@
 package com.example.s354378_mappe2.service;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
@@ -23,7 +25,10 @@ public class MinPeriodisk extends Service {
         Intent i = new Intent(this, MinSendService.class);
        PendingIntent pintent = PendingIntent.getService(this, 0, i, 0);
        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-       alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000, pintent);
+
+       //Sjekker avtaler en gang om dagen. smsTime er klokken 07:00
+       SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
+       alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, sp.getInt("smsTime", 0), AlarmManager.INTERVAL_DAY, pintent);
        return super.onStartCommand(intent, flags, startId);
 
    }

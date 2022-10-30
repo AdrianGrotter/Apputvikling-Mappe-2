@@ -37,41 +37,61 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
 
+        //Henter knapper
         Button btnRegistrer = findViewById(R.id.btnCreateContact);
         Button btnShowContacts = findViewById(R.id.btnShowContactsPage);
         Button btnShowAppointments = findViewById(R.id.btnShowAppointmentsPage);
         Button btnCreateAppointment = findViewById(R.id.btnCreateAppointment);
+        Button btnToggleSMS = findViewById(R.id.toggleSMS);
+        Button btnToggleService = findViewById(R.id.toggleService);
 
+        //Initialiserer sharedpreferences om det er første gang siden lastes
         SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("sjekkSMS", true);
-        editor.putString("standardMessage", "No message added");
-        editor.putString("smsTime", "0500");
-        editor.putBoolean("sjekkNotifikasjon", true);
-        editor.apply();
+        if(!sp.getBoolean("initialized", false)){
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("sjekkSMS", true);
+            editor.putString("standardMessage", "No message added");
+            editor.putInt("smsTime", 25200000);
+            editor.putBoolean("sjekkNotifikasjon", true);
+            editor.putBoolean("initialized", true);
+            editor.apply();
+        }
 
+        //Gir symbolene riktig drawable
+        btnToggleSMS.setBackgroundResource(sp.getBoolean("sjekkSMS", false) ? R.drawable.messages : R.drawable.messages_off);
+        btnToggleService.setBackgroundResource(sp.getBoolean("sjekkNotifikasjon", false) ? R.drawable.notifications : R.drawable.notifications_off);
+
+        //Starter broadcastreceiver
         BroadcastReceiver myBroadcastReceiver = new MinBroadcastReceiver();
         IntentFilter filter = new IntentFilter("com.example.service.MITTSIGNAL");
         filter.addAction("com.example.service.MITTSIGNAL");
         this.registerReceiver(myBroadcastReceiver, filter);
         startService(new View(this));
 
+
+        //Setter onclicklistener til knappene som bytter activity
         btnRegistrer.setOnClickListener(view -> activityAddContacts());
         btnShowContacts.setOnClickListener(view -> activityKontaktoversikt());
         btnCreateAppointment.setOnClickListener(view -> activityAddAppointment());
         btnShowAppointments.setOnClickListener(view -> activityAvtaleoversikt());
     }
 
+    //Metode som skrur av og på SMS
     public void toggleSMS(View v){
         SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
         boolean sjekkSMS = sp.getBoolean("sjekkSMS", false);
         SharedPreferences.Editor editor = sp.edit();
         Button btnToggleSMS = findViewById(R.id.toggleSMS);
-        if(sjekkSMS){
+
+
+        if(sjekkSMS){ //Hvis SMS er på skal det skrus av
             editor.putBoolean("sjekkSMS", false);
             Toast.makeText(MainActivity.this, "SMS ble deaktivert!", Toast.LENGTH_SHORT).show();
             btnToggleSMS.setBackgroundResource(R.drawable.messages_off);
-        }else{
+        }
+        else{ //Eller skal det skrus på
+
+            //Kan ikke skrus på om notifikasjoner er av
             if(!sp.getBoolean("sjekkNotifikasjon", false)){
                 Toast.makeText(this, "Du må aktivere notifikasjoner først!", Toast.LENGTH_SHORT).show();
                 return;
@@ -100,12 +120,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void stoppPeriodisk(View v){
+    public void togglePeriodisk(View v){
         SharedPreferences sp = getSharedPreferences("my_prefs", Activity.MODE_PRIVATE);
         Button btnToggleService = findViewById(R.id.toggleService);
         SharedPreferences.Editor editor = sp.edit();
 
-        if(!sp.getBoolean("sjekkNotifikasjon", false)){
+        if(!sp.getBoolean("sjekkNotifikasjon", false)){ //Gjør dette om notifikasjoner er skrudd av
             editor.putBoolean("sjekkNotifikasjon", true);
             startService(v);
             Toast.makeText(this, "Notifikasjoner er aktivert!", Toast.LENGTH_SHORT).show();
@@ -117,10 +137,12 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("sjekkNotifikasjon", false);
         editor.apply();
 
+        //Skrur av SMS om det er på
         if(sp.getBoolean("sjekkSMS", false)){
             toggleSMS(v);
         }
 
+        //Stopper notifikasjoner
         Intent i = new Intent(this, MinSendService.class);
         PendingIntent pintent = PendingIntent.getService(this, 0, i, 0);
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

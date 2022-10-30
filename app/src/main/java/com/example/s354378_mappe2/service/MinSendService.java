@@ -42,24 +42,27 @@ public class MinSendService extends Service {
         db = dbHelper.getWritableDatabase();
 
         List<Appointment> myAppointments = dbHelper.retrieveAllAppointments(db);
-        StringBuilder test = new StringBuilder();
-        int myCounter = 0;
+
+        //Sjekker dato på alle avtaler
         for (Appointment a : myAppointments){
+
+            //If sjekker om datoen er riktig
             if (a.getDate().equals(Utilities.getTodaysDate())){
-                myCounter++;
                 for(Contact c : dbHelper.retrieveAllContacts(db)){
+
+                    //If sjekker om at SMS sendes til riktig kontakt
                     if(c.get_ID() == Long.parseLong(a.getParticipants())){
+
+                        //Sender SMS om til riktig kontakt om avtalen er i dag
                        sendSMSMessage(c.getPhone(), a.getMessage());
                        break;
                     }
                 }
             }
         }
-        test.append("You have ");
-        test.append(myCounter);
-        test.append(" appointments today");
 
-        NotificationManager  notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        //Oppretter notifikasjonen
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Intent i = new Intent(this, AvtaleoversiktActivity.class);
         PendingIntent pintent = PendingIntent.getActivity(this, 0, i, 0);
         Notification notifikasjon = new NotificationCompat.Builder(this, "MinKanal")
@@ -82,16 +85,19 @@ public class MinSendService extends Service {
             Toast.makeText(this, "SMS-funksjoner er deaktivert", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        //Henter permissions
         int MY_PERMISSIONS_REQUEST_SEND_SMS = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS);
         int MY_PHONE_STATE_PERMISSION = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.READ_PHONE_STATE);
-        System.out.println(MY_PERMISSIONS_REQUEST_SEND_SMS + "    "+ MY_PHONE_STATE_PERMISSION);
 
-        if(MY_PERMISSIONS_REQUEST_SEND_SMS >= 0 /*&& MY_PHONE_STATE_PERMISSION >= 0*/){
+        //Sjekker om programmet har permissions.
+        //Om det ikke er gitt permissions returnerer variablene over -1
+        if(MY_PERMISSIONS_REQUEST_SEND_SMS >= 0 && MY_PHONE_STATE_PERMISSION >= 0){
             SmsManager smsMan = SmsManager.getDefault();
             smsMan.sendTextMessage(phoneNo, null, message, null, null);
-            Toast.makeText(this, "Har sendt sms til "+phoneNo, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "SMS'er er sent ut!"+phoneNo, Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "The app doesn't have SMS permissions", Toast.LENGTH_SHORT).show();
         }
