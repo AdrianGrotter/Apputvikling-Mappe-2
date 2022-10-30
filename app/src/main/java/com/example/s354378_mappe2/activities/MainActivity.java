@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         if(!sp.getBoolean("initialized", false)){
             SharedPreferences.Editor editor = sp.edit();
             editor.putBoolean("sjekkSMS", true);
-            editor.putString("standardMessage", "No message added");
+            editor.putString("standardMessage", "Det er ikke satt noen melding");
             editor.putInt("smsTime", 25200000);
             editor.putBoolean("sjekkNotifikasjon", true);
             editor.putBoolean("initialized", true);

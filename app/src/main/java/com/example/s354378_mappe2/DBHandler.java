@@ -29,7 +29,7 @@ public class DBHandler extends SQLiteOpenHelper {
     static String KEY_PARTICIPANTS = "Participants";
     static String KEY_MESSAGE = "Message";
     static int DATABASE_VERSION = 3;
-    static String DATABASE_NAME = "Database_name";
+    static String DATABASE_NAME = "ContactsAndAppointments";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
